@@ -1,0 +1,119 @@
+roomId: R-19283
+roomName: Living Room A
+homeId: H-62357
+
+roomId: R-18273
+roomName: Kitchen A
+homeId: H-62357
+
+roomId: R-38201
+roomName: Bedroom A
+homeId: H-62357
+
+roomId: R-48203
+roomName: Bathroom A
+homeId: H-62357
+
+roomId: R-49282
+roomName: Study Room A
+homeId: H-62357
+
+roomId: R-29301
+roomName: Living Room B
+homeId: H-19372
+
+roomId: R-98302
+roomName: Kitchen B
+homeId: H-19372
+
+roomId: R-19382
+roomName: Bedroom B
+homeId: H-19372
+
+roomId: R-89302
+roomName: Bathroom B
+homeId: H-19372
+
+roomId: R-48273
+roomName: Study Room B
+homeId: H-19372
+
+roomId: R-57382
+roomName: Living Room C
+homeId: H-49201
+
+roomId: R-48372
+roomName: Kitchen C
+homeId: H-49201
+
+roomId: R-29381
+roomName: Bedroom C
+homeId: H-49201
+
+roomId: R-48292
+roomName: Bathroom C
+homeId: H-49201
+
+roomId: R-49273
+roomName: Study Room C
+homeId: H-49201
+
+roomId: R-98320
+roomName: Living Room D
+homeId: H-83729
+
+roomId: R-19372
+roomName: Kitchen D
+homeId: H-83729
+
+roomId: R-48239
+roomName: Bedroom D
+homeId: H-83729
+
+roomId: R-48293
+roomName: Bathroom D
+homeId: H-83729
+
+roomId: R-49283
+roomName: Study Room D
+homeId: H-83729
+
+roomId: R-29302
+roomName: Living Room E
+homeId: H-48290
+
+roomId: R-49201
+roomName: Kitchen E
+homeId: H-48290
+
+roomId: R-48392
+roomName: Bedroom E
+homeId: H-48290
+
+roomId: R-48293
+roomName: Bathroom E
+homeId: H-48290
+
+roomId: R-49282
+roomName: Study Room E
+homeId: H-48290
+
+roomId: R-27300
+roomName: Bedroom 1
+homeId: H-10690
+
+roomId: R-10291
+roomName: Living Area A
+homeId: H-19372
+
+roomId: R-12339
+roomName: Living room 4
+homeId: H-19372
+
+roomId: R-7168
+roomName: dummy room
+homeId: H-7149
+
+roomId: R-21858
+roomName: Ali room
+homeId: H-21842

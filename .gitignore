@@ -1,0 +1,11 @@
+.vs/
+
+
+*.obj
+*.exe
+*.pdb
+*.ilk
+*.log
+
+*.vcxproj.user
+*.ipch

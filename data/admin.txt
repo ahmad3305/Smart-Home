@@ -1,0 +1,5 @@
+adminId: A-98345
+username: admin_ahmad
+password: 123456
+name: Ahmad Admin
+role: admin

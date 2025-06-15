@@ -1,0 +1,59 @@
+guestId: G-83472
+username: guest_ahmed
+password: 7Hx9@rT
+name: Ahmed Guest
+homeId: H-62357
+
+guestId: G-72639
+username: guest_lisa
+password: 8KmX&3z
+name: Lisa Guest
+homeId: H-62357
+
+guestId: G-92384
+username: guest_julia
+password: 9Lv@pQ
+name: Julia Guest
+homeId: H-19372
+
+guestId: G-18374
+username: guest_omar
+password: &Rx7Wd@
+name: Omar Guest
+homeId: H-19372
+
+guestId: G-59283
+username: guest_sophia
+password: Qz6T&k1
+name: Sophia Guest
+homeId: H-49201
+
+guestId: G-48372
+username: guest_adam
+password: kM8X@P3
+name: Adam Guest
+homeId: H-49201
+
+guestId: G-82345
+username: guest_lucas
+password: &Tz9Wd@
+name: Lucas Guest
+homeId: H-83729
+
+guestId: G-29384
+username: guest_amelia
+password: !Xk7Rp2
+name: Amelia Guest
+homeId: H-83729
+
+guestId: G-48293
+username: guest_elena
+password: Qp7Wd&k
+name: Elena Guest
+homeId: H-48290
+
+guestId: G-11294
+username: guest_noah
+password: #Rx6Tz&
+name: Noah Guest
+homeId: H-48290

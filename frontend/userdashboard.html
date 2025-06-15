@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Dashboard - Smart Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            background: #f8f9fd;
+        }
+
+        .dashboard-header {
+            background: #007bff;
+            color: white;
+            padding: 1.3em 2em;
+            font-size: 1.5em;
+        }
+
+        .homes-container {
+            max-width: 700px;
+            margin: 2em auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px #0001;
+            padding: 2em 2em 1em 2em;
+        }
+
+        .section-title {
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 1em;
+        }
+
+        .home-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .home-card {
+            background: #f5faff;
+            border: 1px solid #e1e7ef;
+            border-radius: 8px;
+            margin-bottom: 1em;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1em 1.4em;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+
+            .home-card:hover {
+                background: #d0ecff;
+            }
+
+        .home-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .home-name {
+            font-weight: 600;
+            color: #1a355e;
+        }
+
+        .home-address {
+            font-size: 0.95em;
+            color: #555b70;
+        }
+
+        .go-rooms-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 0.4em 1.1em;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.15s;
+            margin-left: 1.2em;
+        }
+
+            .go-rooms-btn:hover {
+                background: #005fa3;
+            }
+
+        #logout-btn {
+            float: right;
+            background: #da233b;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 0.4em 1em;
+            font-size: 1em;
+            margin-top: -8px;
+            cursor: pointer;
+            transition: background 0.18s;
+        }
+
+            #logout-btn:hover {
+                background: #b91c31;
+            }
+
+        #homesMsg {
+            color: #c00;
+            margin-top: 1.5em;
+        }
+
+        @media (max-width: 600px) {
+            .homes-container {
+                padding: 1em 0.2em 0.5em 0.2em;
+            }
+
+            .dashboard-header {
+                padding: 1em;
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-header">
+        User Dashboard
+        <button id="logout-btn">Logout</button>
+    </div>
+    <div class="homes-container">
+        <div class="section-title">My Homes</div>
+        <ul id="homeList" class="home-list"></ul>
+        <div id="homesMsg"></div>
+    </div>
+
+    <script>
+        // Fetch and show homes for the logged-in user
+        async function fetchHomes() {
+            const homeList = document.getElementById("homeList");
+            const msg = document.getElementById("homesMsg");
+            homeList.innerHTML = "";
+            msg.textContent = "";
+
+            // Get userId from localStorage (set this after login)
+            const userId = localStorage.getItem("userId");
+            if (!userId) {
+                msg.textContent = "No user logged in. Please log in again.";
+                setTimeout(() => window.location.href = "login.html", 1200);
+                return;
+            }
+
+            try {
+                const resp = await fetch(`/api/user/homes?userId=${encodeURIComponent(userId)}`);
+                if (!resp.ok) {
+                    msg.textContent = "Failed to load homes.";
+                    return;
+                }
+                const data = await resp.json();
+                if (!data.homes || data.homes.length === 0) {
+                    msg.textContent = "You have no homes added. Please contact admin to add homes.";
+                    return;
+                }
+                data.homes.forEach(home => {
+                    const li = document.createElement("li");
+                    li.className = "home-card";
+                    li.onclick = () => {
+                        // Go to rooms page for this home
+                        window.location.href = `userhome.html?homeId=${encodeURIComponent(home.homeId)}`;
+                    };
+
+                    // Home info
+                    const info = document.createElement("div");
+                    info.className = "home-info";
+                    info.innerHTML = `<span class="home-name">${home.homeName || home.homeId}</span>
+                                          <span class="home-address">${home.address || ""}</span>`;
+                    li.appendChild(info);
+
+                    // Button
+                    const btn = document.createElement("button");
+                    btn.className = "go-rooms-btn";
+                    btn.textContent = "View Rooms";
+                    btn.onclick = (e) => {
+                        e.stopPropagation();
+                        window.location.href = `userhome.html?homeId=${encodeURIComponent(home.homeId)}`;
+                    };
+                    li.appendChild(btn);
+
+                    homeList.appendChild(li);
+                });
+            } catch (err) {
+                msg.textContent = "An error occurred loading homes.";
+            }
+        }
+
+        fetchHomes();
+
+        // Logout button
+        document.getElementById("logout-btn").onclick = function () {
+            localStorage.removeItem("userId");
+            window.location.href = "login.html";
+        };
+    </script>
+</body>
+</html>

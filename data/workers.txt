@@ -1,0 +1,59 @@
+workerId: W-30003  
+name: Alex Turner  
+contact: 1122334455  
+skillLevel: Beginner  
+deviceType: Light
+
+workerId: W-30004  
+name: Maria Lopez  
+contact: 2233445566  
+skillLevel: Expert  
+deviceType: Heater
+
+workerId: W-30005  
+name: Ravi Kumar  
+contact: 3344556677  
+skillLevel: Intermediate  
+deviceType: Wifi
+
+workerId: W-30006  
+name: Li Wei  
+contact: 4455667788  
+skillLevel: Expert  
+deviceType: DoorLock
+
+workerId: W-30007  
+name: Fatima Zahra  
+contact: 5566778899  
+skillLevel: Beginner  
+deviceType: WindowLock
+
+workerId: W-30008  
+name: Daniel Kim  
+contact: 6677889900  
+skillLevel: Intermediate  
+deviceType: Light
+
+workerId: W-30009  
+name: Aisha Khan  
+contact: 7788990011  
+skillLevel: Expert  
+deviceType: AC
+
+workerId: W-30010  
+name: Pedro Silva  
+contact: 8899001122  
+skillLevel: Beginner  
+deviceType: Fan
+
+workerId: W-30001
+name: John Doe
+contact: 1234567890
+skillLevel: Expert
+deviceType: AC
+
+workerId: W-30002
+name: Jane Smith
+contact: 0987654321
+skillLevel: Intermediate
+deviceType: Fan

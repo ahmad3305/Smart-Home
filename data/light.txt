@@ -1,0 +1,16 @@
+deviceId: D-19283
+brightness: 19
+deviceId: D-19382
+brightness: 44
+deviceId: D-49273
+brightness: 10
+deviceId: D-49201
+brightness: 6
+deviceId: D-49283
+brightness: 7
+deviceId: D-29302
+brightness: 2
+deviceId: D-58373
+brightness: 8
+deviceId: D-48302
+brightness: 5

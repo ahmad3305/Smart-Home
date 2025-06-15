@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Device Energy Usage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px #0001;
+        }
+
+        h1 {
+            background: #343a40;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px 8px 0 0;
+            margin: -2rem -2rem 2rem -2rem;
+        }
+
+        .summary {
+            background: #f0f4fa;
+            padding: 1em 1.5em;
+            border-radius: 6px;
+            margin-bottom: 2em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.15em;
+        }
+
+        .summary-value {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #007bff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2em;
+        }
+
+        th, td {
+            padding: .75em 1em;
+            border-bottom: 1px solid #e9ecef;
+            text-align: left;
+        }
+
+        th {
+            background: #f8fafc;
+        }
+
+        tr:nth-child(even) {
+            background: #f7f9fc;
+        }
+
+        .back-btn {
+            background: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: .5em 1em;
+            cursor: pointer;
+            margin-bottom: 1.5em;
+            font-size: 1em;
+        }
+
+            .back-btn:hover {
+                background: #495057;
+            }
+
+        .no-data {
+            color: #555;
+            font-style: italic;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="back-btn" onclick="window.history.back()">&larr; Back</button>
+        <h1>Device Energy Usage</h1>
+        <div class="summary" id="summary">
+            <span>Total Energy Used: <span class="summary-value" id="totalEnergy">--</span> kWh</span>
+            <span>Total Cost: <span class="summary-value" id="totalCost">--</span></span>
+        </div>
+        <h2>Usage Sessions</h2>
+        <div id="usages"></div>
+    </div>
+    <script>
+        // Get deviceId from URL
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+        const deviceId = getQueryParam("deviceId");
+        if (!deviceId) {
+            document.body.innerHTML = "<p>Missing deviceId in URL.</p>";
+            throw new Error("No deviceId");
+        }
+
+        async function fetchEnergyUsages() {
+            const resp = await fetch(`/api/device/${deviceId}/energyusages`);
+            const data = await resp.json();
+            let usages = (data.usages || []);
+
+            // Calculate cumulative totals
+            let totalEnergy = 0, totalCost = 0;
+            for (const u of usages) {
+                totalEnergy += Number(u.energyConsumed || 0);
+                totalCost += Number(u.cost || 0);
+            }
+            document.getElementById("totalEnergy").textContent = totalEnergy.toFixed(3);
+            document.getElementById("totalCost").textContent = "$" + totalCost.toFixed(2);
+
+            // Build table
+            let html = "";
+            if (usages.length === 0) {
+                html = `<div class="no-data">No energy usage records found for this device.</div>`;
+            } else {
+                html += `<table>
+                    <thead>
+                        <tr>
+                            <th>On Time</th>
+                            <th>Off Time</th>
+                            <th>Energy Used (kWh)</th>
+                            <th>Cost ($)</th>
+                        </tr>
+                    </thead>
+                    <tbody>`;
+                for (const u of usages) {
+                    html += `<tr>
+                        <td>${u.onTimestamp || "-"}</td>
+                        <td>${u.offTimestamp || "-"}</td>
+                        <td>${Number(u.energyConsumed || 0).toFixed(3)}</td>
+                        <td>$${Number(u.cost || 0).toFixed(2)}</td>
+                    </tr>`;
+                }
+                html += `</tbody></table>`;
+            }
+            document.getElementById("usages").innerHTML = html;
+        }
+
+        fetchEnergyUsages();
+    </script>
+</body>
+</html>

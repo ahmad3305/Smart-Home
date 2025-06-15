@@ -1,0 +1,39 @@
+supplierId: S-30001
+supplierName: BrightTech
+contact: brighttech@email.com
+
+supplierId: S-30002
+supplierName: FanMaster
+contact: hello@fanmaster.com
+
+supplierId: S-30003
+supplierName: CoolBreeze
+contact: support@coolbreeze.com
+
+supplierId: S-30004
+supplierName: HeatWave
+contact: info@heatwave.com
+
+supplierId: S-30005
+supplierName: NetConnect
+contact: net@connect.com
+
+supplierId: S-30006
+supplierName: LockIT
+contact: support@lockit.com
+
+supplierId: S-30007
+supplierName: Breeze Fans
+contact: secure@breezefans.com
+
+supplierId: S-30008
+supplierName: SafeHome
+contact: sales@safehome.com
+
+supplierId: S-30009
+supplierName: AirGuard
+contact: air@airguard.com
+
+supplierId: S-30010
+supplierName: PlugMaster
+contact: service@plugmaster.com

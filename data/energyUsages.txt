@@ -1,0 +1,874 @@
+usageId: EU-001
+deviceId: D-19283
+onTimestamp: 2025-06-09 08:00:00
+offTimestamp: 2025-06-09 08:45:00
+energyConsumed: 0.75
+cost: 0.15
+
+usageId: EU-002
+deviceId: D-19283
+onTimestamp: 2025-06-09 12:30:00
+offTimestamp: 2025-06-09 13:15:00
+energyConsumed: 0.75
+cost: 0.15
+
+usageId: EU-003
+deviceId: D-18273
+onTimestamp: 2025-06-09 10:15:00
+offTimestamp: 2025-06-09 11:00:00
+energyConsumed: 0.75
+cost: 0.15
+
+usageId: EU-004
+deviceId: D-18273
+onTimestamp: 2025-06-09 14:00:00
+offTimestamp: 2025-06-09 14:45:00
+energyConsumed: 0.75
+cost: 0.15
+
+usageId: EU-005
+deviceId: D-38201
+onTimestamp: 2025-06-09 09:00:00
+offTimestamp: 2025-06-09 10:30:00
+energyConsumed: 1.5
+cost: 0.30
+
+usageId: EU-006
+deviceId: D-38201
+onTimestamp: 2025-06-09 15:00:00
+offTimestamp: 2025-06-09 16:30:00
+energyConsumed: 1.5
+cost: 0.30
+
+usageId: EU-007
+deviceId: D-48203
+onTimestamp: 2025-06-09 07:30:00
+offTimestamp: 2025-06-09 08:15:00
+energyConsumed: 0.75
+cost: 0.15
+
+usageId: EU-008
+deviceId: D-48203
+onTimestamp: 2025-06-09 13:00:00
+offTimestamp: 2025-06-09 13:45:00
+energyConsumed: 0.75
+cost: 0.15
+
+usageId: EU-009
+deviceId: D-49282
+onTimestamp: 2025-06-09 10:45:00
+offTimestamp: 2025-06-09 11:45:00
+energyConsumed: 1.0
+cost: 0.20
+
+usageId: EU-010
+deviceId: D-49282
+onTimestamp: 2025-06-09 18:00:00
+offTimestamp: 2025-06-09 19:00:00
+energyConsumed: 1.0
+cost: 0.20
+
+usageId: EU-011
+deviceId: D-29301
+onTimestamp: 2025-06-09 11:30:00
+offTimestamp: 2025-06-09 12:15:00
+energyConsumed: 0.75
+cost: 0.15
+
+usageId: EU-012
+deviceId: D-29301
+onTimestamp: 2025-06-09 20:15:00
+offTimestamp: 2025-06-09 21:00:00
+energyConsumed: 0.75
+cost: 0.15
+
+usageId: EU-013
+deviceId: D-98302
+onTimestamp: 2025-06-09 09:45:00
+offTimestamp: 2025-06-09 11:15:00
+energyConsumed: 1.5
+cost: 0.30
+
+usageId: EU-014
+deviceId: D-98302
+onTimestamp: 2025-06-09 15:45:00
+offTimestamp: 2025-06-09 17:15:00
+energyConsumed: 1.5
+cost: 0.30
+
+usageId: EU-015
+deviceId: D-19382
+onTimestamp: 2025-06-09 08:15:00
+offTimestamp: 2025-06-09 09:00:00
+energyConsumed: 0.75
+cost: 0.15
+
+usageId: EU-016
+deviceId: D-19382
+onTimestamp: 2025-06-09 13:30:00
+offTimestamp: 2025-06-09 14:15:00
+energyConsumed: 0.75
+cost: 0.15
+
+usageId: EU-017
+deviceId: D-89302
+onTimestamp: 2025-06-09 09:30:00
+offTimestamp: 2025-06-09 10:15:00
+energyConsumed: 0.75
+cost: 0.15
+
+usageId: EU-018
+deviceId: D-89302
+onTimestamp: 2025-06-09 14:30:00
+offTimestamp: 2025-06-09 15:15:00
+energyConsumed: 0.75
+cost: 0.15
+
+usageId: EU-019
+deviceId: D-48273
+onTimestamp: 2025-06-09 07:15:00
+offTimestamp: 2025-06-09 08:00:00
+energyConsumed: 0.75
+cost: 0.15
+
+usageId: EU-020
+deviceId: D-48273
+onTimestamp: 2025-06-09 17:15:00
+offTimestamp: 2025-06-09 18:00:00
+energyConsumed: 0.75
+cost: 0.15
+
+usageId: EU-021
+deviceId: D-49273
+onTimestamp: 2025-06-09 08:00:00
+offTimestamp: 2025-06-09 09:00:00
+energyConsumed: 1.0
+cost: 0.20
+
+usageId: EU-022
+deviceId: D-49273
+onTimestamp: 2025-06-09 12:00:00
+offTimestamp: 2025-06-09 13:00:00
+energyConsumed: 1.0
+cost: 0.20
+
+usageId: EU-023
+deviceId: D-98320
+onTimestamp: 2025-06-09 10:30:00
+offTimestamp: 2025-06-09 11:30:00
+energyConsumed: 1.0
+cost: 0.20
+
+usageId: EU-024
+deviceId: D-98320
+onTimestamp: 2025-06-09 15:00:00
+offTimestamp: 2025-06-09 16:00:00
+energyConsumed: 1.0
+cost: 0.20
+
+usageId: EU-025
+deviceId: D-19372
+onTimestamp: 2025-06-09 09:15:00
+offTimestamp: 2025-06-09 10:15:00
+energyConsumed: 1.0
+cost: 0.20
+
+usageId: EU-026
+deviceId: D-19372
+onTimestamp: 2025-06-09 13:45:00
+offTimestamp: 2025-06-09 14:45:00
+energyConsumed: 1.0
+cost: 0.20
+
+usageId: EU-027
+deviceId: D-48239
+onTimestamp: 2025-06-09 08:30:00
+offTimestamp: 2025-06-09 09:30:00
+energyConsumed: 1.0
+cost: 0.20
+
+usageId: EU-028
+deviceId: D-48239
+onTimestamp: 2025-06-09 16:00:00
+offTimestamp: 2025-06-09 17:00:00
+energyConsumed: 1.0
+cost: 0.20
+
+usageId: EU-029
+deviceId: D-48293
+onTimestamp: 2025-06-09 07:45:00
+offTimestamp: 2025-06-09 08:45:00
+energyConsumed: 1.0
+cost: 0.20
+
+usageId: EU-030
+deviceId: D-48293
+onTimestamp: 2025-06-09 12:30:00
+offTimestamp: 2025-06-09 13:30:00
+energyConsumed: 1.0
+cost: 0.20
+
+usageId: EU-031
+deviceId: D-49283
+onTimestamp: 2025-06-09 09:00:00
+offTimestamp: 2025-06-09 10:00:00
+energyConsumed: 1.0
+cost: 0.20
+
+usageId: EU-032
+deviceId: D-49283
+onTimestamp: 2025-06-09 14:00:00
+offTimestamp: 2025-06-09 15:00:00
+energyConsumed: 1.0
+cost: 0.20
+
+usageId: EU-033
+deviceId: D-29302
+onTimestamp: 2025-06-09 10:45:00
+offTimestamp: 2025-06-09 11:45:00
+energyConsumed: 1.0
+cost: 0.20
+
+usageId: EU-034
+deviceId: D-29302
+onTimestamp: 2025-06-09 16:30:00
+offTimestamp: 2025-06-09 17:30:00
+energyConsumed: 1.0
+cost: 0.20
+
+usageId: EU-035
+deviceId: D-49201
+onTimestamp: 2025-06-09 08:00:00
+offTimestamp: 2025-06-09 09:30:00
+energyConsumed: 1.5
+cost: 0.30
+
+usageId: EU-036
+deviceId: D-49201
+onTimestamp: 2025-06-09 18:00:00
+offTimestamp: 2025-06-09 19:30:00
+energyConsumed: 1.5
+cost: 0.30
+
+usageId: EU-037
+deviceId: D-48392
+onTimestamp: 2025-06-09 09:30:00
+offTimestamp: 2025-06-09 10:30:00
+energyConsumed: 1.0
+cost: 0.20
+
+usageId: EU-038
+deviceId: D-48392
+onTimestamp: 2025-06-09 13:45:00
+offTimestamp: 2025-06-09 14:45:00
+energyConsumed: 1.0
+cost: 0.20
+
+usageId: EU-039
+deviceId: D-48293
+onTimestamp: 2025-06-09 07:15:00
+offTimestamp: 2025-06-09 08:15:00
+energyConsumed: 1.0
+cost: 0.20
+
+usageId: EU-040
+deviceId: D-48293
+onTimestamp: 2025-06-09 16:00:00
+offTimestamp: 2025-06-09 17:00:00
+energyConsumed: 1.0
+cost: 0.20
+
+usageId: EU-041
+deviceId: D-49282
+onTimestamp: 2025-06-09 07:30:00
+offTimestamp: 2025-06-09 08:15:00
+energyConsumed: 0.75
+cost: 0.15
+
+usageId: EU-042
+deviceId: D-49282
+onTimestamp: 2025-06-09 12:45:00
+offTimestamp: 2025-06-09 13:30:00
+energyConsumed: 0.75
+cost: 0.15
+
+usageId: EU-043
+deviceId: D-18372
+onTimestamp: 2025-06-09 09:00:00
+offTimestamp: 2025-06-09 10:30:00
+energyConsumed: 1.5
+cost: 0.30
+
+usageId: EU-044
+deviceId: D-18372
+onTimestamp: 2025-06-09 15:00:00
+offTimestamp: 2025-06-09 16:30:00
+energyConsumed: 1.5
+cost: 0.30
+
+usageId: EU-045
+deviceId: D-29381
+onTimestamp: 2025-06-09 07:45:00
+offTimestamp: 2025-06-09 08:45:00
+energyConsumed: 1.0
+cost: 0.20
+
+usageId: EU-046
+deviceId: D-29381
+onTimestamp: 2025-06-09 12:30:00
+offTimestamp: 2025-06-09 13:30:00
+energyConsumed: 1.0
+cost: 0.20
+
+usageId: EU-047
+deviceId: D-48283
+onTimestamp: 2025-06-09 09:15:00
+offTimestamp: 2025-06-09 10:15:00
+energyConsumed: 1.0
+cost: 0.20
+
+usageId: EU-048
+deviceId: D-48283
+onTimestamp: 2025-06-09 13:45:00
+offTimestamp: 2025-06-09 14:45:00
+energyConsumed: 1.0
+cost: 0.20
+
+usageId: EU-049
+deviceId: D-49283
+onTimestamp: 2025-06-09 08:30:00
+offTimestamp: 2025-06-09 09:30:00
+energyConsumed: 1.0
+cost: 0.20
+
+usageId: EU-050
+deviceId: D-49283
+onTimestamp: 2025-06-09 16:00:00
+offTimestamp: 2025-06-09 17:00:00
+energyConsumed: 1.0
+cost: 0.20
+
+usageId: EU-051
+deviceId: D-49273
+onTimestamp: 2025-06-09 08:00:00
+offTimestamp: 2025-06-09 09:15:00
+energyConsumed: 1.25
+cost: 0.25
+
+usageId: EU-052
+deviceId: D-49273
+onTimestamp: 2025-06-09 12:30:00
+offTimestamp: 2025-06-09 13:45:00
+energyConsumed: 1.25
+cost: 0.25
+
+usageId: EU-053
+deviceId: D-98320
+onTimestamp: 2025-06-09 09:15:00
+offTimestamp: 2025-06-09 10:30:00
+energyConsumed: 1.25
+cost: 0.25
+
+usageId: EU-054
+deviceId: D-98320
+onTimestamp: 2025-06-09 14:15:00
+offTimestamp: 2025-06-09 15:30:00
+energyConsumed: 1.25
+cost: 0.25
+
+usageId: EU-055
+deviceId: D-19372
+onTimestamp: 2025-06-09 10:00:00
+offTimestamp: 2025-06-09 11:15:00
+energyConsumed: 1.25
+cost: 0.25
+
+usageId: EU-056
+deviceId: D-19372
+onTimestamp: 2025-06-09 16:15:00
+offTimestamp: 2025-06-09 17:30:00
+energyConsumed: 1.25
+cost: 0.25
+
+usageId: EU-057
+deviceId: D-48239
+onTimestamp: 2025-06-09 07:45:00
+offTimestamp: 2025-06-09 09:00:00
+energyConsumed: 1.25
+cost: 0.25
+
+usageId: EU-058
+deviceId: D-48239
+onTimestamp: 2025-06-09 11:30:00
+offTimestamp: 2025-06-09 12:45:00
+energyConsumed: 1.25
+cost: 0.25
+
+usageId: EU-059
+deviceId: D-48293
+onTimestamp: 2025-06-09 09:45:00
+offTimestamp: 2025-06-09 11:00:00
+energyConsumed: 1.25
+cost: 0.25
+
+usageId: EU-060
+deviceId: D-48293
+onTimestamp: 2025-06-09 14:30:00
+offTimestamp: 2025-06-09 15:45:00
+energyConsumed: 1.25
+cost: 0.25
+
+usageId: EU-061
+deviceId: D-49283
+onTimestamp: 2025-06-09 08:30:00
+offTimestamp: 2025-06-09 09:45:00
+energyConsumed: 1.25
+cost: 0.25
+
+usageId: EU-062
+deviceId: D-49283
+onTimestamp: 2025-06-09 13:00:00
+offTimestamp: 2025-06-09 14:15:00
+energyConsumed: 1.25
+cost: 0.25
+
+usageId: EU-063
+deviceId: D-29302
+onTimestamp: 2025-06-09 10:45:00
+offTimestamp: 2025-06-09 12:00:00
+energyConsumed: 1.25
+cost: 0.25
+
+usageId: EU-064
+deviceId: D-29302
+onTimestamp: 2025-06-09 17:00:00
+offTimestamp: 2025-06-09 18:15:00
+energyConsumed: 1.25
+cost: 0.25
+
+usageId: EU-065
+deviceId: D-49201
+onTimestamp: 2025-06-09 08:15:00
+offTimestamp: 2025-06-09 10:15:00
+energyConsumed: 2.0
+cost: 0.40
+
+usageId: EU-066
+deviceId: D-49201
+onTimestamp: 2025-06-09 18:15:00
+offTimestamp: 2025-06-09 20:15:00
+energyConsumed: 2.0
+cost: 0.40
+
+usageId: EU-067
+deviceId: D-48392
+onTimestamp: 2025-06-09 09:30:00
+offTimestamp: 2025-06-09 10:45:00
+energyConsumed: 1.25
+cost: 0.25
+
+usageId: EU-068
+deviceId: D-48392
+onTimestamp: 2025-06-09 15:00:00
+offTimestamp: 2025-06-09 16:15:00
+energyConsumed: 1.25
+cost: 0.25
+
+usageId: EU-069
+deviceId: D-48293
+onTimestamp: 2025-06-09 07:45:00
+offTimestamp: 2025-06-09 09:00:00
+energyConsumed: 1.25
+cost: 0.25
+
+usageId: EU-070
+deviceId: D-48293
+onTimestamp: 2025-06-09 14:45:00
+offTimestamp: 2025-06-09 16:00:00
+energyConsumed: 1.25
+cost: 0.25
+
+usageId: EU-071
+deviceId: D-49282
+onTimestamp: 2025-06-09 08:15:00
+offTimestamp: 2025-06-09 09:15:00
+energyConsumed: 1.0
+cost: 0.20
+
+usageId: EU-072
+deviceId: D-49282
+onTimestamp: 2025-06-09 12:45:00
+offTimestamp: 2025-06-09 13:45:00
+energyConsumed: 1.0
+cost: 0.20
+
+usageId: EU-073
+deviceId: D-18372
+onTimestamp: 2025-06-09 09:15:00
+offTimestamp: 2025-06-09 10:45:00
+energyConsumed: 1.5
+cost: 0.30
+
+usageId: EU-074
+deviceId: D-18372
+onTimestamp: 2025-06-09 15:15:00
+offTimestamp: 2025-06-09 16:45:00
+energyConsumed: 1.5
+cost: 0.30
+
+usageId: EU-075
+deviceId: D-29381
+onTimestamp: 2025-06-09 09:00:00
+offTimestamp: 2025-06-09 10:15:00
+energyConsumed: 1.25
+cost: 0.25
+
+usageId: EU-076
+deviceId: D-29381
+onTimestamp: 2025-06-09 14:30:00
+offTimestamp: 2025-06-09 15:45:00
+energyConsumed: 1.25
+cost: 0.25
+
+usageId: EU-077
+deviceId: D-48283
+onTimestamp: 2025-06-09 09:30:00
+offTimestamp: 2025-06-09 10:30:00
+energyConsumed: 1.0
+cost: 0.20
+
+usageId: EU-078
+deviceId: D-48283
+onTimestamp: 2025-06-09 16:00:00
+offTimestamp: 2025-06-09 17:00:00
+energyConsumed: 1.0
+cost: 0.20
+
+usageId: EU-079
+deviceId: D-49283
+onTimestamp: 2025-06-09 09:00:00
+offTimestamp: 2025-06-09 10:00:00
+energyConsumed: 1.0
+cost: 0.20
+
+usageId: EU-080
+deviceId: D-49283
+onTimestamp: 2025-06-09 15:00:00
+offTimestamp: 2025-06-09 16:00:00
+energyConsumed: 1.0
+cost: 0.20
+
+usageId: EU-081
+deviceId: D-29302
+onTimestamp: 2025-06-09 11:00:00
+offTimestamp: 2025-06-09 12:15:00
+energyConsumed: 1.25
+cost: 0.25
+
+usageId: EU-082
+deviceId: D-29302
+onTimestamp: 2025-06-09 17:15:00
+offTimestamp: 2025-06-09 18:30:00
+energyConsumed: 1.25
+cost: 0.25
+
+usageId: EU-083
+deviceId: D-49201
+onTimestamp: 2025-06-09 09:15:00
+offTimestamp: 2025-06-09 10:45:00
+energyConsumed: 2.0
+cost: 0.40
+
+usageId: EU-084
+deviceId: D-49201
+onTimestamp: 2025-06-09 19:15:00
+offTimestamp: 2025-06-09 20:45:00
+energyConsumed: 2.0
+cost: 0.40
+
+usageId: EU-085
+deviceId: D-48392
+onTimestamp: 2025-06-09 10:00:00
+offTimestamp: 2025-06-09 11:15:00
+energyConsumed: 1.25
+cost: 0.25
+
+usageId: EU-086
+deviceId: D-48392
+onTimestamp: 2025-06-09 16:15:00
+offTimestamp: 2025-06-09 17:30:00
+energyConsumed: 1.25
+cost: 0.25
+
+usageId: EU-087
+deviceId: D-48293
+onTimestamp: 2025-06-09 07:45:00
+offTimestamp: 2025-06-09 09:00:00
+energyConsumed: 1.25
+cost: 0.25
+
+usageId: EU-088
+deviceId: D-48293
+onTimestamp: 2025-06-09 15:00:00
+offTimestamp: 2025-06-09 16:15:00
+energyConsumed: 1.25
+cost: 0.25
+
+usageId: EU-089
+deviceId: D-49282
+onTimestamp: 2025-06-09 08:00:00
+offTimestamp: 2025-06-09 09:00:00
+energyConsumed: 1.0
+cost: 0.20
+
+usageId: EU-090
+deviceId: D-49282
+onTimestamp: 2025-06-09 13:15:00
+offTimestamp: 2025-06-09 14:15:00
+energyConsumed: 1.0
+cost: 0.20
+
+usageId: EU-091
+deviceId: D-18372
+onTimestamp: 2025-06-09 09:00:00
+offTimestamp: 2025-06-09 10:30:00
+energyConsumed: 1.5
+cost: 0.30
+
+usageId: EU-092
+deviceId: D-18372
+onTimestamp: 2025-06-09 15:30:00
+offTimestamp: 2025-06-09 17:00:00
+energyConsumed: 1.5
+cost: 0.30
+
+usageId: EU-093
+deviceId: D-29381
+onTimestamp: 2025-06-09 09:30:00
+offTimestamp: 2025-06-09 10:45:00
+energyConsumed: 1.25
+cost: 0.25
+
+usageId: EU-094
+deviceId: D-29381
+onTimestamp: 2025-06-09 16:15:00
+offTimestamp: 2025-06-09 17:30:00
+energyConsumed: 1.25
+cost: 0.25
+
+usageId: EU-095
+deviceId: D-48283
+onTimestamp: 2025-06-09 09:15:00
+offTimestamp: 2025-06-09 10:15:00
+energyConsumed: 1.0
+cost: 0.20
+
+usageId: EU-096
+deviceId: D-48283
+onTimestamp: 2025-06-09 13:45:00
+offTimestamp: 2025-06-09 14:45:00
+energyConsumed: 1.0
+cost: 0.20
+
+usageId: EU-097
+deviceId: D-49283
+onTimestamp: 2025-06-09 08:15:00
+offTimestamp: 2025-06-09 09:15:00
+energyConsumed: 1.0
+cost: 0.20
+
+usageId: EU-098
+deviceId: D-49283
+onTimestamp: 2025-06-09 14:15:00
+offTimestamp: 2025-06-09 15:15:00
+energyConsumed: 1.0
+cost: 0.20
+
+usageId: EU-099
+deviceId: D-29302
+onTimestamp: 2025-06-09 11:30:00
+offTimestamp: 2025-06-09 12:45:00
+energyConsumed: 1.25
+cost: 0.25
+
+usageId: EU-100
+deviceId: D-29302
+onTimestamp: 2025-06-09 17:30:00
+offTimestamp: 2025-06-09 18:45:00
+energyConsumed: 1.25
+cost: 0.25
+
+usageId: EU-20752
+deviceId: D-18273
+onTimestamp: 2025-06-14 15:55:15
+offTimestamp: 2025-06-14 16:04:15
+energyConsumed: 6.750000
+cost: 3.375000
+
+usageId: EU-20942
+deviceId: D-19283
+onTimestamp: 2025-06-14 15:56:13
+offTimestamp: 2025-06-14 16:11:13
+energyConsumed: 3.000000
+cost: 1.500000
+
+usageId: EU-21409
+deviceId: D-98302
+onTimestamp: 2025-06-14 15:58:36
+offTimestamp: 2025-06-14 16:11:36
+energyConsumed: 0.433333
+cost: 0.216667
+
+usageId: EU-26000
+deviceId: D-98302
+onTimestamp: 2025-06-14 16:22:02
+offTimestamp: 2025-06-14 16:32:02
+energyConsumed: 0.333333
+cost: 0.166667
+
+usageId: EU-27496
+deviceId: D-38201
+onTimestamp: 2025-06-14 16:29:40
+offTimestamp: 2025-06-14 16:33:40
+energyConsumed: 66.666667
+cost: 33.333333
+
+usageId: EU-4497
+deviceId: D-18273
+onTimestamp: 2025-06-14 20:06:46
+offTimestamp: 2025-06-14 20:36:46
+energyConsumed: 22.500000
+cost: 11.250000
+
+usageId: EU-8981
+deviceId: D-7234
+onTimestamp: 2025-06-14 20:29:39
+offTimestamp: 2025-06-14 21:02:39
+energyConsumed: 0.055000
+cost: 0.027500
+
+usageId: EU-9467
+deviceId: D-7234
+onTimestamp: 2025-06-14 20:32:08
+offTimestamp: 2025-06-14 20:54:08
+energyConsumed: 0.036667
+cost: 0.018333
+
+usageId: EU-19936
+deviceId: D-18273
+onTimestamp: 2025-06-15 00:12:48
+offTimestamp: 2025-06-15 00:30:48
+energyConsumed: 0.013500
+cost: 0.006750
+
+usageId: EU-31348
+deviceId: D-21222
+onTimestamp: 2025-06-15 03:58:17
+offTimestamp: 2025-06-15 04:10:17
+energyConsumed: 0.020000
+cost: 0.010000
+
+usageId: EU-31423
+deviceId: D-21222
+onTimestamp: 2025-06-15 03:58:40
+offTimestamp: 2025-06-15 04:03:40
+energyConsumed: 0.008333
+cost: 0.004167
+
+usageId: EU-1535
+deviceId: D-23812
+onTimestamp: 2025-06-15 04:13:22
+offTimestamp: 2025-06-15 04:22:22
+energyConsumed: 0.150000
+cost: 0.075000
+
+usageId: EU-1620
+deviceId: D-29301
+onTimestamp: 2025-06-15 04:13:48
+offTimestamp: 2025-06-15 04:19:48
+energyConsumed: 0.000200
+cost: 0.000100
+
+usageId: EU-3302
+deviceId: D-48203
+onTimestamp: 2025-06-15 04:22:23
+offTimestamp: 2025-06-15 05:06:23
+energyConsumed: 1.320000
+cost: 0.660000
+
+usageId: EU-28110
+deviceId: D-19283
+onTimestamp: 2025-06-15 14:50:43
+offTimestamp: 2025-06-15 14:54:43
+energyConsumed: 0.000800
+cost: 0.000400
+
+usageId: EU-24441
+deviceId: D-24376
+onTimestamp: 2025-06-15 17:19:14
+offTimestamp: 2025-06-15 17:28:14
+energyConsumed: 0.013500
+cost: 0.006750
+
+usageId: EU-32419
+deviceId: D-24376
+onTimestamp: 2025-06-15 17:59:57
+offTimestamp: 2025-06-15 18:02:57
+energyConsumed: 0.004500
+cost: 0.002250
+
+usageId: EU-32436
+deviceId: D-24376
+onTimestamp: 2025-06-15 18:00:02
+offTimestamp: 2025-06-15 18:09:02
+energyConsumed: 0.013500
+cost: 0.006750
+
+usageId: EU-402
+deviceId: D-24376
+onTimestamp: 2025-06-15 18:03:47
+offTimestamp: 2025-06-15 18:04:47
+energyConsumed: 0.001500
+cost: 0.000750
+
+usageId: EU-1686
+deviceId: D-24376
+onTimestamp: 2025-06-15 18:10:20
+offTimestamp: 2025-06-15 18:14:20
+energyConsumed: 0.006000
+cost: 0.003000
+
+usageId: EU-3005
+deviceId: D-24376
+onTimestamp: 2025-06-15 18:17:04
+offTimestamp: 2025-06-15 18:25:04
+energyConsumed: 0.012000
+cost: 0.006000
+
+usageId: EU-17592
+deviceId: D-19283
+onTimestamp: 2025-06-15 19:31:31
+offTimestamp: 2025-06-15 19:35:31
+energyConsumed: 0.000800
+cost: 0.000400
+
+usageId: EU-17677
+deviceId: D-19283
+onTimestamp: 2025-06-15 19:31:57
+offTimestamp: 2025-06-15 19:35:57
+energyConsumed: 0.000800
+cost: 0.000400
+
+usageId: EU-18076
+deviceId: D-19283
+onTimestamp: 2025-06-15 19:33:59
+offTimestamp: 2025-06-15 19:52:59
+energyConsumed: 0.003800
+cost: 0.001900
+
+usageId: EU-18092
+deviceId: D-21222
+onTimestamp: 2025-06-15 19:34:04
+offTimestamp: 2025-06-15 19:40:04
+energyConsumed: 0.010000
+cost: 0.005000

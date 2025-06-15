@@ -1,0 +1,34 @@
+userId: U-23812
+username: user_john
+password: xR5h@kP9
+name: John Doe
+
+userId: U-82736
+username: user_susan
+password: !mR7Hd*
+name: Susan Brown
+
+userId: U-91287
+username: user_ali
+password: 9Hv@kqL
+name: Ali Khan
+
+userId: U-10283
+username: user_emma
+password: &WkX8@2
+name: Emma Watson
+
+userId: U-39485
+username: user_michael
+password: #Tz6d&Q
+name: Michael Smith
+
+userId: U-7106
+username: dummy
+password: 1234
+name: dummy
+
+userId: U-21819
+username: ali
+password: 123
+name: Ali hamza

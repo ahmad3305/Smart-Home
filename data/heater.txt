@@ -1,0 +1,14 @@
+deviceId: D-48203
+temperature: 28
+deviceId: D-57382
+temperature: 21
+deviceId: D-48239
+temperature: 25
+deviceId: D-49282
+temperature: 30
+deviceId: D-48293
+temperature: 24
+deviceId: D-49383
+temperature: 27
+deviceId: D-48283
+temperature: 19

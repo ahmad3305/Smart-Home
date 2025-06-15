@@ -1,0 +1,16 @@
+deviceId: D-49282
+ssid: HomeNet1
+deviceId: D-48372
+ssid: OfficeWifi
+deviceId: D-48293
+ssid: GuestNet
+deviceId: D-18372
+ssid: IoT_Devices
+deviceId: D-59384
+ssid: MeshWifi
+deviceId: D-58382
+ssid: Warehouse
+deviceId: D-39284
+ssid: CafeZone
+deviceId: D-23263
+ssid: HomeNet

@@ -1,0 +1,407 @@
+deviceId: D-19283
+deviceName: Light 1
+roomId: R-19283
+deviceType: Light
+status: 0
+power: 12
+
+deviceId: D-18273
+deviceName: Fan 1
+roomId: R-19283
+deviceType: Fan
+status: 0
+power: 45
+
+deviceId: D-38201
+deviceName: AC 1
+roomId: R-18273
+deviceType: AC
+status: 0
+power: 1000
+
+deviceId: D-48203
+deviceName: Heater 1
+roomId: R-18273
+deviceType: Heater
+status: 0
+power: 1800
+
+deviceId: D-49282
+deviceName: Wifi 1
+roomId: R-38201
+deviceType: Wifi
+status: 1
+power: 8
+
+deviceId: D-29301
+deviceName: DoorLock 1
+roomId: R-38201
+deviceType: DoorLock
+status: 1
+power: 2
+
+deviceId: D-98302
+deviceName: WindowLock 1
+roomId: R-48203
+deviceType: WindowLock
+status: 0
+power: 2
+
+deviceId: D-19382
+deviceName: Light 2
+roomId: R-48203
+deviceType: Light
+status: 1
+power: 13
+
+deviceId: D-89302
+deviceName: Fan 2
+roomId: R-49282
+deviceType: Fan
+status: 1
+power: 50
+
+deviceId: D-48273
+deviceName: AC 2
+roomId: R-49282
+deviceType: AC
+status: 0
+power: 990
+
+deviceId: D-57382
+deviceName: Heater 2
+roomId: R-29301
+deviceType: Heater
+status: 1
+power: 1750
+
+deviceId: D-48372
+deviceName: Wifi 2
+roomId: R-29301
+deviceType: Wifi
+status: 0
+power: 7
+
+deviceId: D-29381
+deviceName: DoorLock 2
+roomId: R-98302
+deviceType: DoorLock
+status: 1
+power: 2
+
+deviceId: D-48292
+deviceName: WindowLock 2
+roomId: R-98302
+deviceType: WindowLock
+status: 1
+power: 2
+
+deviceId: D-49273
+deviceName: Light 3
+roomId: R-19382
+deviceType: Light
+status: 1
+power: 15
+
+deviceId: D-98320
+deviceName: Fan 3
+roomId: R-19382
+deviceType: Fan
+status: 1
+power: 60
+
+deviceId: D-19372
+deviceName: AC 3
+roomId: R-89302
+deviceType: AC
+status: 1
+power: 1100
+
+deviceId: D-48239
+deviceName: Heater 3
+roomId: R-89302
+deviceType: Heater
+status: 1
+power: 1850
+
+deviceId: D-48293
+deviceName: Wifi 3
+roomId: R-48273
+deviceType: Wifi
+status: 1
+power: 9
+
+deviceId: D-49283
+deviceName: DoorLock 3
+roomId: R-48273
+deviceType: DoorLock
+status: 1
+power: 2
+
+deviceId: D-29302
+deviceName: WindowLock 3
+roomId: R-57382
+deviceType: WindowLock
+status: 1
+power: 2
+
+deviceId: D-49201
+deviceName: Light 4
+roomId: R-57382
+deviceType: Light
+status: 1
+power: 10
+
+deviceId: D-48392
+deviceName: Fan 4
+roomId: R-48372
+deviceType: Fan
+status: 1
+power: 55
+
+deviceId: D-48293
+deviceName: AC 4
+roomId: R-48372
+deviceType: AC
+status: 1
+power: 1200
+
+deviceId: D-49282
+deviceName: Heater 4
+roomId: R-29381
+deviceType: Heater
+status: 1
+power: 1700
+
+deviceId: D-18372
+deviceName: Wifi 4
+roomId: R-29381
+deviceType: Wifi
+status: 1
+power: 10
+
+deviceId: D-29381
+deviceName: DoorLock 4
+roomId: R-48292
+deviceType: DoorLock
+status: 1
+power: 2
+
+deviceId: D-48283
+deviceName: WindowLock 4
+roomId: R-48292
+deviceType: WindowLock
+status: 1
+power: 2
+
+deviceId: D-49283
+deviceName: Light 5
+roomId: R-49273
+deviceType: Light
+status: 1
+power: 11
+
+deviceId: D-29384
+deviceName: Fan 5
+roomId: R-49273
+deviceType: Fan
+status: 1
+power: 47
+
+deviceId: D-38492
+deviceName: AC 5
+roomId: R-98320
+deviceType: AC
+status: 1
+power: 1050
+
+deviceId: D-48293
+deviceName: Heater 5
+roomId: R-98320
+deviceType: Heater
+status: 1
+power: 1800
+
+deviceId: D-59384
+deviceName: Wifi 5
+roomId: R-19372
+deviceType: Wifi
+status: 1
+power: 8
+
+deviceId: D-48202
+deviceName: DoorLock 5
+roomId: R-19372
+deviceType: DoorLock
+status: 1
+power: 2
+
+deviceId: D-11192
+deviceName: WindowLock 5
+roomId: R-48239
+deviceType: WindowLock
+status: 1
+power: 2
+
+deviceId: D-29302
+deviceName: Light 6
+roomId: R-48239
+deviceType: Light
+status: 1
+power: 14
+
+deviceId: D-93823
+deviceName: Fan 6
+roomId: R-48293
+deviceType: Fan
+status: 1
+power: 52
+
+deviceId: D-49383
+deviceName: Heater 6
+roomId: R-49283
+deviceType: Heater
+status: 1
+power: 1750
+
+deviceId: D-58382
+deviceName: Wifi 6
+roomId: R-49283
+deviceType: Wifi
+status: 1
+power: 9
+
+deviceId: D-29384
+deviceName: DoorLock 6
+roomId: R-29302
+deviceType: DoorLock
+status: 1
+power: 2
+
+deviceId: D-49382
+deviceName: WindowLock 6
+roomId: R-29302
+deviceType: WindowLock
+status: 1
+power: 2
+
+deviceId: D-58373
+deviceName: Light 7
+roomId: R-49201
+deviceType: Light
+status: 1
+power: 12
+
+deviceId: D-19302
+deviceName: Fan 7
+roomId: R-49201
+deviceType: Fan
+status: 1
+power: 42
+
+deviceId: D-28393
+deviceName: AC 7
+roomId: R-48392
+deviceType: AC
+status: 1
+power: 950
+
+deviceId: D-48283
+deviceName: Heater 7
+roomId: R-48392
+deviceType: Heater
+status: 1
+power: 1800
+
+deviceId: D-39284
+deviceName: Wifi 7
+roomId: R-48293
+deviceType: Wifi
+status: 1
+power: 11
+
+deviceId: D-48292
+deviceName: DoorLock 7
+roomId: R-48293
+deviceType: DoorLock
+status: 1
+power: 2
+
+deviceId: D-49273
+deviceName: WindowLock 7
+roomId: R-49282
+deviceType: WindowLock
+status: 1
+power: 2
+
+deviceId: D-48302
+deviceName: Light 8
+roomId: R-49282
+deviceType: Light
+status: 1
+power: 13
+
+deviceId: D-6484
+deviceName: Fan 3
+roomId: R-29301
+deviceType: Fan
+status: 0
+power: 80
+
+deviceId: D-6536
+deviceName: Fan 4
+roomId: R-29301
+deviceType: Fan
+status: 0
+power: 100
+
+deviceId: D-22377
+deviceName: AC 1
+roomId: R-22253
+deviceType: AC
+status: 0
+power: 1500
+
+deviceId: D-7234
+deviceName: Dummy's Fan
+roomId: R-7168
+deviceType: Fan
+status: 0
+power: 100
+
+deviceId: D-21222
+deviceName: Fan 3
+roomId: R-19283
+deviceType: Fan
+status: 0
+power: 100
+
+deviceId: D-21304
+deviceName: Fan 4
+roomId: R-19283
+deviceType: Fan
+status: 0
+power: 100
+
+deviceId: D-23263
+deviceName: HomeNet
+roomId: R-19283
+deviceType: Wifi
+status: 0
+power: 10
+
+deviceId: D-23812
+deviceName: AC 5
+roomId: R-19283
+deviceType: AC
+status: 0
+power: 1000
+
+
+deviceId: D-24376
+deviceName: Fan 3
+roomId: R-21858
+deviceType: Fan
+status: 0
+power: 90
+

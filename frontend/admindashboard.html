@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            background: #343a40;
+            color: white;
+            padding: 1rem;
+            margin: 0;
+            position: relative;
+        }
+        /* Log out button style */
+        .logout-container {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            z-index: 5;
+        }
+
+        #logoutBtn {
+            padding: 8px 10px;
+            background: #e74c3c;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.7em;
+        }
+
+            #logoutBtn:hover {
+                background: #c0392b;
+            }
+
+        .worker-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .worker-card {
+            background: #f8fafd;
+            border: 1px solid #e1e4ea;
+            border-radius: 6px;
+            margin-bottom: .7em;
+            overflow: hidden;
+            box-shadow: 0 1px 4px #00000011;
+        }
+
+        .worker-header {
+            cursor: pointer;
+            padding: 0.9em 1.2em;
+            background: #007bff;
+            color: white;
+            font-size: 1.07em;
+            font-weight: bold;
+            border: none;
+            outline: none;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+            .worker-header:hover {
+                background: #0056b3;
+            }
+
+        .worker-details {
+            display: none;
+            background: #fcfcff;
+            padding: 1em 1.5em 1em 1.5em;
+            border-top: 1px solid #e1e4ea;
+            font-size: 1em;
+            color: #2b2b2b;
+            animation: fadein 0.3s;
+        }
+
+        @keyframes fadein {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .worker-details-label {
+            font-weight: bold;
+            width: 120px;
+            display: inline-block;
+        }
+
+        .worker-expand-icon {
+            margin-left: .6em;
+            font-size: 1.2em;
+            transition: transform 0.19s;
+        }
+
+        .worker-card.open .worker-header .worker-expand-icon {
+            transform: rotate(90deg);
+        }
+
+        .worker-card.open .worker-details {
+            display: block;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px #0001;
+        }
+
+        .users-list, .warehouse-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2em;
+        }
+
+            .users-list li, .warehouse-list li {
+                padding: .6em 1em;
+                border-bottom: 1px solid #e9ecef;
+                font-size: 1.1rem;
+                cursor: pointer;
+            }
+
+                .users-list li button {
+                    float: right;
+                    margin-left: 1em;
+                }
+
+        .inventory-list {
+            list-style: none;
+            padding: 0;
+        }
+
+            .inventory-list li {
+                padding: .5em 1em;
+                background: #f3f3fa;
+                margin-bottom: .5em;
+                border-radius: 4px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+        .inventory-supplier {
+            font-size: 0.95em;
+            color: #555;
+            text-align: right;
+        }
+
+        form {
+            margin-top: 2em;
+        }
+
+        input[type="text"], input[type="password"] {
+            padding: .5em;
+            width: 200px;
+            border-radius: 4px;
+            border: 1px solid #ced4da;
+            margin-right: .5em;
+        }
+
+        button {
+            padding: .5em 1.2em;
+            border: none;
+            border-radius: 4px;
+            background: #007bff;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background: #0056b3;
+            }
+
+        .section-title {
+            margin-top: 2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        Admin Dashboard
+        <div class="logout-container">
+            <button id="logoutBtn">Log Out</button>
+        </div>
+    </h1>
+    <div class="container">
+        <h2>Users</h2>
+        <ul class="users-list" id="userList"></ul>
+        <form id="addUserForm" autocomplete="off">
+            <label for="username">Username:</label>
+            <input type="text" id="username" required placeholder="Username">
+            <label for="password">Password:</label>
+            <input type="password" id="password" required placeholder="Password">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required placeholder="Full Name">
+            <button type="submit">Add User</button>
+        </form>
+
+        <!-- WAREHOUSE SECTION -->
+        <h2 class="section-title">Warehouses</h2>
+        <ul class="warehouse-list" id="warehouseList"></ul>
+        <form id="addWarehouseForm" autocomplete="off">
+            <label for="warehouseName">Warehouse Name:</label>
+            <input type="text" id="warehouseName" required placeholder="Warehouse Name">
+            <label for="warehouseLocation">Location:</label>
+            <input type="text" id="warehouseLocation" required placeholder="Location">
+            <button type="submit">Add Warehouse</button>
+        </form>
+
+        <div id="warehouseInventories" style="margin-top:2em;"></div>
+        <!-- WORKERS SECTION -->
+        <h2 class="section-title">Workers</h2>
+        <ul class="worker-list" id="workerList" style="padding:0;list-style:none;"></ul>
+        <form id="addWorkerForm" autocomplete="off" style="margin-bottom:2em;">
+            <label for="workerName">Name:</label>
+            <input type="text" id="workerName" required placeholder="Name">
+            <label for="workerContact">Contact:</label>
+            <input type="text" id="workerContact" required placeholder="Contact">
+            <label for="workerSkillLevel">Skill Level:</label>
+            <select id="workerSkillLevel" required>
+                <option value="">Select Skill Level</option>
+                <option>Beginner</option>
+                <option>Intermediate</option>
+                <option>Expert</option>
+            </select>
+            <label for="workerDeviceType">Device Type:</label>
+            <select id="workerDeviceType" required>
+                <option value="">Select Device Type</option>
+                <option>Light</option>
+                <option>Fan</option>
+                <option>AC</option>
+                <option>Heater</option>
+                <option>Wifi</option>
+                <option>DoorLock</option>
+                <option>WindowLock</option>
+            </select>
+            <button type="submit">Add Worker</button>
+        </form>
+        <div id="workerMsg" style="color:green;margin-top:0.5em;"></div>
+    </div>
+    <script>
+        // Log out button functionality
+        document.getElementById('logoutBtn').addEventListener('click', function () {
+            // (Optional) Clear authentication info here
+            window.location.href = "/frontend/login.html";
+        });
+
+        // USERS SECTION
+        async function fetchUsers() {
+            const resp = await fetch('/api/admin/users');
+            const data = await resp.json();
+            const userList = document.getElementById("userList");
+            userList.innerHTML = "";
+            if (data.users && data.users.length > 0) {
+                data.users.forEach(user => {
+                    const li = document.createElement("li");
+                    li.textContent = `${user.name} (${user.username})`;
+                    const manageBtn = document.createElement("button");
+                    manageBtn.textContent = "Manage Homes";
+                    manageBtn.onclick = () => window.location.href = `user.html?userId=${encodeURIComponent(user.userId)}`;
+                    li.appendChild(manageBtn);
+                    userList.appendChild(li);
+                });
+            } else {
+                userList.innerHTML = "<li>No users found.</li>";
+            }
+        }
+
+        document.getElementById("addUserForm").addEventListener("submit", async e => {
+            e.preventDefault();
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value.trim();
+            const name = document.getElementById("name").value.trim();
+            if (!username || !password || !name) return;
+
+            await fetch('/api/admin/add-user', {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username, password, name })
+            });
+            document.getElementById("username").value = "";
+            document.getElementById("password").value = "";
+            document.getElementById("name").value = "";
+            fetchUsers();
+        });
+
+        fetchUsers();
+
+        // WAREHOUSE SECTION
+        async function fetchWarehouses() {
+            const resp = await fetch('/api/admin/warehouses');
+            const data = await resp.json();
+            const warehouseList = document.getElementById("warehouseList");
+            warehouseList.innerHTML = "";
+            if (data.warehouses && data.warehouses.length > 0) {
+                data.warehouses.forEach(wh => {
+                    const li = document.createElement("li");
+                    li.textContent = `${wh.warehouseName} (${wh.location})`;
+                    li.onclick = () => window.location.href = `warehouse.html?warehouseId=${encodeURIComponent(wh.warehouseId)}`;
+                    warehouseList.appendChild(li);
+                });
+            } else {
+                warehouseList.innerHTML = "<li>No warehouses found.</li>";
+            }
+        }
+
+        document.getElementById("addWarehouseForm").addEventListener("submit", async e => {
+            e.preventDefault();
+            const warehouseName = document.getElementById("warehouseName").value.trim();
+            const location = document.getElementById("warehouseLocation").value.trim();
+            if (!warehouseName || !location) return;
+
+            await fetch('/api/admin/add-warehouse', {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ warehouseName, location })
+            });
+            document.getElementById("warehouseName").value = "";
+            document.getElementById("warehouseLocation").value = "";
+            fetchWarehouses();
+        });
+
+        fetchWarehouses();
+
+        // INVENTORY SECTION
+        async function fetchInventories(warehouseId, warehouseName) {
+            const resp = await fetch(`/api/admin/warehouse/${warehouseId}/inventories`);
+            const data = await resp.json();
+            const container = document.getElementById("warehouseInventories");
+            container.innerHTML = `<h3>Inventories in ${warehouseName}</h3>`;
+            if (data.inventories && data.inventories.length > 0) {
+                const ul = document.createElement("ul");
+                ul.className = "inventory-list";
+                data.inventories.forEach(inv => {
+                    const li = document.createElement("li");
+                    li.innerHTML = `
+                                    <div>
+                                        <b>Device Type:</b> ${inv.deviceType} &nbsp;|&nbsp;
+                                        <b>Quantity:</b> ${inv.quantity}
+                                    </div>
+                                    <div class="inventory-supplier">
+                                        Supplier: <b>${inv.supplier}</b>
+                                    </div>
+                                `;
+                    ul.appendChild(li);
+                });
+                container.appendChild(ul);
+            } else {
+                container.innerHTML += "<div>No inventories in this warehouse.</div>";
+            }
+        }
+
+        // WORKERS SECTION
+        async function fetchWorkers() {
+            const resp = await fetch('/api/admin/workers');
+            const data = await resp.json();
+            const workerList = document.getElementById("workerList");
+            workerList.innerHTML = "";
+            if (data.workers && data.workers.length > 0) {
+                data.workers.forEach((w, idx) => {
+                    // Create card
+                    const card = document.createElement("li");
+                    card.className = "worker-card";
+
+                    // Header
+                    const header = document.createElement("div");
+                    header.className = "worker-header";
+                    header.innerHTML = `<span>${w.name}</span>
+                        <span class="worker-expand-icon">&#9654;</span>`;
+                    header.tabIndex = 0;
+
+                    // Details (initially hidden)
+                    const details = document.createElement("div");
+                    details.className = "worker-details";
+                    details.innerHTML = `
+                        <div><span class="worker-details-label">Worker ID:</span> ${w.workerId}</div>
+                        <div><span class="worker-details-label">Name:</span> ${w.name}</div>
+                        <div><span class="worker-details-label">Contact:</span> ${w.contact}</div>
+                        <div><span class="worker-details-label">Skill Level:</span> ${w.skillLevel}</div>
+                        <div><span class="worker-details-label">Device Type:</span> ${w.deviceType}</div>
+                    `;
+
+                    // Expand/collapse logic
+                    header.onclick = function () {
+                        // Close others
+                        document.querySelectorAll(".worker-card.open").forEach(el => {
+                            if (el !== card) el.classList.remove("open");
+                        });
+                        card.classList.toggle("open");
+                    };
+                    header.onkeypress = function (e) {
+                        if (e.key === " " || e.key === "Enter") header.onclick();
+                    };
+
+                    card.appendChild(header);
+                    card.appendChild(details);
+                    workerList.appendChild(card);
+                });
+            } else {
+                workerList.innerHTML = "<li>No workers found.</li>";
+            }
+        }
+
+        document.getElementById("addWorkerForm").addEventListener("submit", async e => {
+            e.preventDefault();
+            const name = document.getElementById("workerName").value;
+            const contact = document.getElementById("workerContact").value;
+            const skillLevel = document.getElementById("workerSkillLevel").value;
+            const deviceType = document.getElementById("workerDeviceType").value;
+
+            if (!name || !contact || !skillLevel || !deviceType) return;
+
+            const resp = await fetch('/api/admin/workers/add', {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name, contact, skillLevel, deviceType })
+            });
+            const msg = document.getElementById("workerMsg");
+            if (resp.ok) {
+                msg.textContent = "Worker added!";
+            } else {
+                msg.textContent = "Failed to add worker.";
+            }
+            document.getElementById("addWorkerForm").reset();
+            fetchWorkers();
+        });
+
+        fetchWorkers();
+    </script>
+</body>
+</html>

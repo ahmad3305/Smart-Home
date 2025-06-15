@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Details - Smart Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            background: #f8f9fd;
+        }
+
+        .header {
+            background: #007bff;
+            color: white;
+            padding: 1.3em 2em;
+            font-size: 1.5em;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 2em auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px #0001;
+            padding: 2em 2em 1em 2em;
+        }
+
+        .section-title {
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 1em;
+        }
+        /* Highlight for Home Title */
+        .home-title-highlight {
+            background: #007bff;
+            color: #fff;
+            padding: 0.7em 1.3em;
+            border-radius: 8px;
+            font-size: 1.5em;
+            margin-bottom: 1.5em;
+            box-shadow: 0 2px 8px #0002;
+            display: inline-block;
+        }
+
+        .room-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .room-card {
+            background: #f5faff;
+            border: 1px solid #e1e7ef;
+            border-radius: 8px;
+            margin-bottom: 1em;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1em 1.4em;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+
+            .room-card:hover {
+                background: #d0ecff;
+            }
+
+        .room-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .room-name {
+            font-weight: 600;
+            color: #1a355e;
+        }
+
+        .view-devices-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 0.4em 1.1em;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.15s;
+            margin-left: 1.2em;
+        }
+
+            .view-devices-btn:hover {
+                background: #005fa3;
+            }
+
+        #logout-btn {
+            float: right;
+            background: #da233b;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 0.4em 1em;
+            font-size: 1em;
+            margin-top: -8px;
+            cursor: pointer;
+            transition: background 0.18s;
+        }
+
+            #logout-btn:hover {
+                background: #b91c31;
+            }
+
+        #homeMsg, #roomsMsg {
+            color: #c00;
+            margin-top: 1.5em;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 1em 0.2em 0.5em 0.2em;
+            }
+
+            .header {
+                padding: 1em;
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        Home Details
+        <button id="logout-btn">Logout</button>
+    </div>
+    <div class="container">
+        <div class="section-title home-title-highlight" id="homeTitle">Loading...</div>
+        <div id="homeMsg"></div>
+        <div class="section-title" style="margin-top:2em;">Rooms</div>
+        <ul id="roomList" class="room-list"></ul>
+        <div id="roomsMsg"></div>
+    </div>
+    <script>
+        // Utility: get query param
+        function getQueryParam(name) {
+            return new URLSearchParams(window.location.search).get(name);
+        }
+
+        // --- ADDED: Get userId from localStorage ---
+        function getUserId() {
+            return localStorage.getItem("userId");
+        }
+
+        // Fetch and show home details
+        async function fetchHome() {
+            const homeTitle = document.getElementById("homeTitle");
+            const homeMsg = document.getElementById("homeMsg");
+            const homeId = getQueryParam("homeId");
+            const userId = getUserId();
+            if (!homeId) {
+                homeTitle.textContent = "No Home Selected";
+                homeMsg.textContent = "No homeId in URL.";
+                return;
+            }
+            homeMsg.textContent = "";
+            homeTitle.textContent = "Loading...";
+
+            try {
+                // Send userId as header!
+                const resp = await fetch(`/api/user/home/${encodeURIComponent(homeId)}`, {
+                    headers: { "X-User-Id": userId }
+                });
+                if (!resp.ok) {
+                    homeTitle.textContent = "Home Not Found";
+                    homeMsg.textContent = "This home does not exist or you do not have access.";
+                    return;
+                }
+                const data = await resp.json();
+                if (!data.home) {
+                    homeTitle.textContent = "Home Not Found";
+                    homeMsg.textContent = "This home does not exist or you do not have access.";
+                    return;
+                }
+                homeTitle.textContent = data.home.homeName || data.home.homeId;
+                if (data.home.address) {
+                    homeMsg.textContent = data.home.address;
+                }
+            } catch (err) {
+                homeTitle.textContent = "Error Loading Home";
+                homeMsg.textContent = "An error occurred while loading home info.";
+            }
+        }
+
+        // Fetch and show rooms for this home
+        async function fetchRooms() {
+            const roomList = document.getElementById("roomList");
+            const roomsMsg = document.getElementById("roomsMsg");
+            const homeId = getQueryParam("homeId");
+            const userId = getUserId();
+            roomList.innerHTML = "";
+            roomsMsg.textContent = "";
+
+            if (!homeId) {
+                roomsMsg.textContent = "No home selected.";
+                return;
+            }
+
+            try {
+                // Send userId as header!
+                const resp = await fetch(`/api/user/home/${encodeURIComponent(homeId)}/rooms`, {
+                    headers: { "X-User-Id": userId }
+                });
+                if (!resp.ok) {
+                    roomsMsg.textContent = "Failed to load rooms.";
+                    return;
+                }
+                const data = await resp.json();
+                if (!data.rooms || data.rooms.length === 0) {
+                    roomsMsg.textContent = "No rooms found for this home.";
+                    return;
+                }
+                data.rooms.forEach(room => {
+                    const li = document.createElement("li");
+                    li.className = "room-card";
+                    li.onclick = () => {
+                        // Go to devices page for this room
+                        window.location.href = `userroom.html?homeId=${encodeURIComponent(homeId)}&roomId=${encodeURIComponent(room.roomId)}`;
+                    };
+
+                    // Room info
+                    const info = document.createElement("div");
+                    info.className = "room-info";
+                    info.innerHTML = `<span class="room-name">${room.roomName || room.roomId}</span>`;
+                    li.appendChild(info);
+
+                    // Button
+                    const btn = document.createElement("button");
+                    btn.className = "view-devices-btn";
+                    btn.textContent = "View Devices";
+                    btn.onclick = (e) => {
+                        e.stopPropagation();
+                        window.location.href = `userroom.html?homeId=${encodeURIComponent(homeId)}&roomId=${encodeURIComponent(room.roomId)}`;
+                    };
+                    li.appendChild(btn);
+
+                    roomList.appendChild(li);
+                });
+            } catch (err) {
+                roomsMsg.textContent = "An error occurred loading rooms.";
+            }
+        }
+
+        // On page load
+        fetchHome();
+        fetchRooms();
+
+        // Logout button
+        document.getElementById("logout-btn").onclick = function () {
+            localStorage.removeItem("userId");
+            window.location.href = "login.html";
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+inventoryId: I-20001
+warehouseId: W-10001
+deviceType: Light
+quantity: 120
+supplier: BrightTech
+
+inventoryId: I-20002
+warehouseId: W-10001
+deviceType: Fan
+quantity: 85
+supplier: FanMaster
+
+inventoryId: I-20003
+warehouseId: W-10002
+deviceType: AC
+quantity: 60
+supplier: CoolBreeze
+
+inventoryId: I-20004
+warehouseId: W-10002
+deviceType: Heater
+quantity: 45
+supplier: HeatWave
+
+inventoryId: I-20005
+warehouseId: W-10003
+deviceType: Wifi
+quantity: 70
+supplier: NetConnect
+
+inventoryId: I-20006
+warehouseId: W-10003
+deviceType: DoorLock
+quantity: 35
+supplier: LockIT
+
+inventoryId: I-20007
+warehouseId: W-10004
+deviceType: Light
+quantity: 110
+supplier: BrightTech
+
+inventoryId: I-20008
+warehouseId: W-10004
+deviceType: WindowLock
+quantity: 95
+supplier: WindowSecure
+
+inventoryId: I-20009
+warehouseId: W-10005
+deviceType: AC
+quantity: 50
+supplier: CoolBreeze
+
+inventoryId: I-20010
+warehouseId: W-10005
+deviceType: Heater
+quantity: 40
+supplier: HeatWave
+
+inventoryId: I-10034
+warehouseId: W-10001
+deviceType: Light
+quantity: 30
+supplier: LockIT

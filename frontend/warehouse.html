@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Warehouse Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 2rem auto;
+            margin-bottom: 200px;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px #0001;
+        }
+
+
+        h1 {
+            background: #343a40;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px 8px 0 0;
+            margin: -2rem -2rem 2rem -2rem;
+        }
+
+        ul.inventory-list {
+            list-style: none;
+            padding: 0;
+        }
+
+            ul.inventory-list li {
+                padding: .7em 1em;
+                background: #f3f3fa;
+                margin-bottom: .5em;
+                border-radius: 4px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+        .supplier {
+            font-size: 0.95em;
+            color: #555;
+            text-align: right;
+        }
+
+        form {
+            margin-top: 2em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1em;
+            align-items: center;
+        }
+
+        select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-color: white;
+            background-image: url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='5'><polygon points='0,0 10,0 5,5' style='fill:black;'/></svg>");
+            background-repeat: no-repeat;
+            background-position: right 0.7em top 50%;
+            background-size: 0.6em;
+            cursor: pointer;
+        }
+
+
+        input[type="text"], input[type="number"], select {
+            padding: .5em;
+            border-radius: 4px;
+            border: 1px solid #ced4da;
+            width: 180px;
+        }
+
+        button {
+            padding: .5em 1.2em;
+            border: none;
+            border-radius: 4px;
+            background: #007bff;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background: #0056b3;
+            }
+
+        .back-btn {
+            background: #6c757d;
+            margin-bottom: 1.5em;
+        }
+
+            .back-btn:hover {
+                background: #495057;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="back-btn" onclick="window.location.href='admindashboard.html'">&larr; Back to Admin Dashboard</button>
+        <h1 id="warehouseName">Warehouse</h1>
+        <h2>Inventories</h2>
+        <ul class="inventory-list" id="inventoryList"></ul>
+        <form id="addInventoryForm" autocomplete="off">
+            <select id="deviceType" required>
+                <option value="">Device Type</option>
+                <option>Light</option>
+                <option>Fan</option>
+                <option>AC</option>
+                <option>Heater</option>
+                <option>Wifi</option>
+                <option>DoorLock</option>
+                <option>WindowLock</option>
+            </select>
+            <input type="number" id="quantity" min="1" required placeholder="Quantity">
+            <select id="supplier" required>
+                <option value="">Select Supplier</option>
+            </select>
+            <button type="submit">Add Inventory</button>
+        </form>
+    </div>
+
+    <script>
+        // Helper to get URL parameter
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        const warehouseId = getQueryParam("warehouseId");
+        if (!warehouseId) {
+            document.body.innerHTML = "<p>Missing warehouseId in URL.</p>";
+            throw new Error("No warehouseId");
+        }
+
+        // Supplier data
+        const supplierList = [
+            { supplierId: "S-30001", supplierName: "BrightTech" },
+            { supplierId: "S-30002", supplierName: "FanMaster" },
+            { supplierId: "S-30003", supplierName: "CoolBreeze" },
+            { supplierId: "S-30004", supplierName: "HeatWave" },
+            { supplierId: "S-30005", supplierName: "NetConnect" },
+            { supplierId: "S-30006", supplierName: "LockIT" },
+            { supplierId: "S-30007", supplierName: "Breeze Fans" },
+            { supplierId: "S-30008", supplierName: "SafeHome" },
+            { supplierId: "S-30009", supplierName: "AirGuard" },
+            { supplierName: "PlugMaster" }
+        ];
+
+        function populateSupplierDropdown() {
+            const supplierSelect = document.getElementById("supplier");
+            supplierList.forEach(s => {
+                const option = document.createElement("option");
+                option.value = s.supplierName; // Use supplierName as the value
+                option.textContent = s.supplierName;
+                supplierSelect.appendChild(option);
+            });
+        }
+
+        async function fetchWarehouseDetails() {
+            const resp = await fetch('/api/warehouses');
+            const data = await resp.json();
+            const warehouse = (data.warehouses || []).find(w => w.warehouseId === warehouseId);
+            document.getElementById("warehouseName").textContent = warehouse
+                ? `${warehouse.warehouseName} (${warehouse.location})`
+                : "Warehouse";
+        }
+
+        async function fetchInventories() {
+            const resp = await fetch(`/api/admin/warehouse/${warehouseId}/inventories`);
+            const data = await resp.json();
+            const inventoryList = document.getElementById("inventoryList");
+            inventoryList.innerHTML = "";
+            if (data.inventories && data.inventories.length > 0) {
+                data.inventories.forEach(inv => {
+                    const li = document.createElement("li");
+                    li.innerHTML = `<div>
+                                <b>Device Type:</b> ${inv.deviceType} &nbsp;|&nbsp;
+                                <b>Quantity:</b> ${inv.quantity}
+                            </div>
+                            <div class="supplier">
+                                Supplier: <b>${inv.supplier}</b>
+                            </div>`;
+                    inventoryList.appendChild(li);
+                });
+            } else {
+                inventoryList.innerHTML = "<li>No inventories in this warehouse.</li>";
+            }
+        }
+
+        document.getElementById("addInventoryForm").addEventListener("submit", async e => {
+            e.preventDefault();
+            const deviceType = document.getElementById("deviceType").value;
+            const quantity = document.getElementById("quantity").value;
+            const supplierName = document.getElementById("supplier").value;
+            if (!deviceType || !quantity || !supplierName) return;
+            await fetch(`/api/admin/warehouse/${warehouseId}/add-inventory`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ deviceType, quantity, supplier: supplierName })
+            });
+            document.getElementById("deviceType").value = "";
+            document.getElementById("quantity").value = "";
+            document.getElementById("supplier").value = "";
+            fetchInventories();
+        });
+
+        populateSupplierDropdown();
+        fetchWarehouseDetails();
+        fetchInventories();
+    </script>
+</body>
+</html>

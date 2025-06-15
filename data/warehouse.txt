@@ -1,0 +1,19 @@
+warehouseId: W-10001
+warehouseName: Central Warehouse
+location: Main Campus
+
+warehouseId: W-10002
+warehouseName: North Storage
+location: North District
+
+warehouseId: W-10003
+warehouseName: South Depot
+location: South Area
+
+warehouseId: W-10004
+warehouseName: East Hub
+location: East Side
+
+warehouseId: W-10005
+warehouseName: West Facility
+location: West Zone

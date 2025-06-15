@@ -1,0 +1,442 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Room Devices - Smart Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            background: #f8f9fd;
+        }
+
+        .header {
+            background: #007bff;
+            color: white;
+            padding: 1.3em 2em;
+            font-size: 1.5em;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 2em auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px #0001;
+            padding: 2em 2em 1em 2em;
+        }
+
+        .section-title {
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 1em;
+        }
+
+        .device-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .device-card {
+            background: #f5faff;
+            border: 1px solid #e1e7ef;
+            border-radius: 8px;
+            margin-bottom: 1em;
+            padding: 1em 1.4em;
+            font-size: 1.08em;
+            transition: background 0.15s;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5em;
+        }
+
+        .device-title {
+            font-weight: 600;
+            color: #1a355e;
+            margin-bottom: 0.3em;
+        }
+
+        .device-info {
+            color: #333;
+            font-size: 0.98em;
+            margin-bottom: 0.2em;
+        }
+
+        .device-actions-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1em;
+            margin-bottom: 0.3em;
+        }
+
+        .back-btn {
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 0.45em 1.2em;
+            font-size: 1em;
+            margin-bottom: 1.2em;
+            cursor: pointer;
+            transition: background 0.16s;
+        }
+
+            .back-btn:hover {
+                background: #005fa3;
+            }
+
+        .toggle-btn {
+            padding: 0.7em 1.5em;
+            height: 2.5em;
+            width: 7em;
+            border: none;
+            border-radius: 5px;
+            background: #25b346;
+            color: #fff;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.13s;
+        }
+
+            .toggle-btn.off {
+                background: #e94e1b;
+            }
+
+        .see-energy-btn {
+            margin-left: auto;
+            padding: 0.35em 1.1em;
+            border: none;
+            border-radius: 5px;
+            background: #ff9800;
+            color: #fff;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.13s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 2em;
+        }
+
+            .see-energy-btn:hover {
+                background: #e68900;
+            }
+
+            .see-energy-btn .icon {
+                margin-right: 0.5em;
+                font-size: 1.1em;
+            }
+
+        .feature-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.6em;
+            margin-top: 0.2em;
+        }
+
+        .feature-btn {
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1em;
+            padding: 0.23em 0.7em;
+            cursor: pointer;
+            transition: background 0.13s;
+        }
+
+            .feature-btn:active {
+                background: #005fa3;
+            }
+
+        .feature-value {
+            min-width: 2.8em;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        #devicesMsg {
+            color: #c00;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 1em 0.2em 0.5em 0.2em;
+            }
+
+            .header {
+                padding: 1em;
+                font-size: 1.1em;
+            }
+
+            .device-actions-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5em;
+            }
+
+            .see-energy-btn {
+                width: 100%;
+                margin-left: 0;
+                margin-top: 0.4em;
+                min-width: unset;
+                justify-content: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        Room Devices
+    </div>
+    <div class="container">
+        <button class="back-btn" id="backBtn">&larr; Back to Rooms</button>
+        <div class="section-title" id="roomTitle">Loading Room...</div>
+        <ul id="deviceList" class="device-list"></ul>
+        <div id="devicesMsg"></div>
+    </div>
+    <script>
+        function getQueryParam(name) {
+            return new URLSearchParams(window.location.search).get(name);
+        }
+        function getUserId() {
+            return localStorage.getItem("userId");
+        }
+        const homeId = getQueryParam("homeId");
+        const roomId = getQueryParam("roomId");
+        const roomTitle = document.getElementById("roomTitle");
+        const deviceList = document.getElementById("deviceList");
+        const devicesMsg = document.getElementById("devicesMsg");
+        const userId = getUserId();
+
+        document.getElementById("backBtn").onclick = function () {
+            window.location.href = `userhome.html?homeId=${encodeURIComponent(homeId)}`;
+        };
+
+        async function toggleDeviceStatus(deviceId, btn, infoDiv, deviceObj) {
+            btn.disabled = true;
+            try {
+                const resp = await fetch(`/api/devices/${encodeURIComponent(deviceId)}/toggle`, {
+                    method: "POST"
+                });
+                if (resp.ok) {
+                    deviceObj.status = !deviceObj.status;
+                    btn.textContent = deviceObj.status ? "Turn Off" : "Turn On";
+                    btn.className = "toggle-btn" + (deviceObj.status ? "" : " off");
+                    let info = infoDiv.textContent;
+                    infoDiv.textContent = info.replace(/Status: (ON|OFF|1|0)/, "Status: " + (deviceObj.status ? "ON" : "OFF"));
+                } else {
+                    alert("Failed to toggle device.");
+                }
+            } catch {
+                alert("Error toggling device.");
+            }
+            btn.disabled = false;
+        }
+
+        async function adjustFeature(device, feature, delta, valueSpan, infoDiv) {
+            let oldValue = device[feature] || 0;
+            let newValue = oldValue + delta;
+            if (feature === "speed") newValue = Math.max(0, Math.min(10, newValue));
+            if (feature === "brightness") newValue = Math.max(0, Math.min(100, newValue));
+            if (feature === "temperature") newValue = Math.max(10, Math.min(40, newValue));
+            valueSpan.textContent = newValue;
+            try {
+                const resp = await fetch(`/api/user/device/${encodeURIComponent(device.deviceId)}/update`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-User-Id": userId
+                    },
+                    body: JSON.stringify({ feature, value: newValue })
+                });
+                if (!resp.ok) {
+                    alert("Failed to update feature.");
+                    valueSpan.textContent = oldValue;
+                } else {
+                    device[feature] = newValue;
+                    let info = infoDiv.textContent;
+                    if (feature === "speed")
+                        infoDiv.textContent = info.replace(/Speed: \d+/, "Speed: " + newValue);
+                    if (feature === "brightness")
+                        infoDiv.textContent = info.replace(/Brightness: \d+/, "Brightness: " + newValue);
+                    if (feature === "temperature")
+                        infoDiv.textContent = info.replace(/Temp: \d+/, "Temp: " + newValue);
+                }
+            } catch {
+                alert("Error updating feature.");
+                valueSpan.textContent = oldValue;
+            }
+        }
+
+        async function fetchDevices() {
+            if (!roomId) {
+                roomTitle.textContent = "No Room Selected";
+                devicesMsg.textContent = "No roomId in URL.";
+                return;
+            }
+            roomTitle.textContent = "Loading Devices...";
+            devicesMsg.textContent = "";
+            deviceList.innerHTML = "";
+
+            let roomName = getQueryParam("roomName");
+            if (!roomName) {
+                try {
+                    const resp = await fetch(`/api/user/home/${encodeURIComponent(homeId)}/rooms`, {
+                        headers: { "X-User-Id": userId }
+                    });
+                    if (resp.ok) {
+                        const data = await resp.json();
+                        const found = (data.rooms || []).find(r => r.roomId === roomId);
+                        if (found) roomName = found.roomName;
+                    }
+                } catch { }
+            }
+            if (roomName) {
+                roomTitle.textContent = roomName;
+            } else {
+                roomTitle.textContent = "Room Devices";
+            }
+
+            try {
+                const resp = await fetch(`/api/user/rooms/${encodeURIComponent(roomId)}/devices`);
+                if (!resp.ok) {
+                    devicesMsg.textContent = "Failed to load devices.";
+                    return;
+                }
+                const devices = await resp.json();
+                if (!Array.isArray(devices) || devices.length === 0) {
+                    devicesMsg.textContent = "No devices found in this room.";
+                    return;
+                }
+                devicesMsg.textContent = "";
+                deviceList.innerHTML = "";
+
+                devices.forEach(dev => {
+                    const li = document.createElement("li");
+                    li.className = "device-card";
+                    const titleDiv = document.createElement("div");
+                    titleDiv.className = "device-title";
+                    titleDiv.innerHTML = `${dev.deviceName || dev.deviceId} <span style="font-weight:400;color:#666;">(${dev.deviceType})</span>`;
+                    li.appendChild(titleDiv);
+
+                    const infoDiv = document.createElement("div");
+                    infoDiv.className = "device-info";
+                    let extra = "";
+                    if (dev.deviceType === "Fan" && dev.speed !== undefined)
+                        extra += ` | Speed: ${dev.speed}`;
+                    if (dev.deviceType === "Light" && dev.brightness !== undefined)
+                        extra += ` | Brightness: ${dev.brightness}`;
+                    if (dev.deviceType === "AC" && dev.temperature !== undefined)
+                        extra += ` | Temp: ${dev.temperature}`;
+                    if (dev.deviceType === "Heater" && dev.temperature !== undefined)
+                        extra += ` | Temp: ${dev.temperature}`;
+                    if (dev.deviceType === "Wifi" && dev.ssid !== undefined)
+                        extra += ` | SSID: ${dev.ssid}`;
+                    infoDiv.textContent = "Status: " + (dev.status ? "ON" : "OFF") + extra;
+                    infoDiv.extra = extra;
+                    li.appendChild(infoDiv);
+
+                    const actionsRow = document.createElement("div");
+                    actionsRow.className = "device-actions-row";
+
+                    const toggleBtn = document.createElement("button");
+                    toggleBtn.className = "toggle-btn" + (dev.status ? "" : " off");
+                    toggleBtn.textContent = dev.status ? "Turn Off" : "Turn On";
+                    toggleBtn.onclick = () => toggleDeviceStatus(dev.deviceId, toggleBtn, infoDiv, dev);
+                    actionsRow.appendChild(toggleBtn);
+
+                    const energyBtn = document.createElement("button");
+                    energyBtn.className = "see-energy-btn";
+                    energyBtn.title = "See energy usages";
+                    energyBtn.innerHTML = '<span class="icon">&#9881;</span> See Usage';
+                    energyBtn.onclick = () => {
+                        window.location.href = `device_energy.html?deviceId=${encodeURIComponent(dev.deviceId)}`;
+                    };
+                    actionsRow.appendChild(energyBtn);
+
+                    li.appendChild(actionsRow);
+
+                    if (dev.deviceType === "Fan" && dev.speed !== undefined) {
+                        const featureDiv = document.createElement("div");
+                        featureDiv.className = "feature-controls";
+                        const minusBtn = document.createElement("button");
+                        minusBtn.className = "feature-btn";
+                        minusBtn.textContent = "−";
+                        const valueSpan = document.createElement("span");
+                        valueSpan.className = "feature-value";
+                        valueSpan.textContent = dev.speed;
+                        const plusBtn = document.createElement("button");
+                        plusBtn.className = "feature-btn";
+                        plusBtn.textContent = "+";
+                        minusBtn.onclick = () => adjustFeature(dev, "speed", -1, valueSpan, infoDiv);
+                        plusBtn.onclick = () => adjustFeature(dev, "speed", 1, valueSpan, infoDiv);
+                        featureDiv.append("Speed:", minusBtn, valueSpan, plusBtn);
+                        li.appendChild(featureDiv);
+                    }
+                    if (dev.deviceType === "Light" && dev.brightness !== undefined) {
+                        const featureDiv = document.createElement("div");
+                        featureDiv.className = "feature-controls";
+                        const minusBtn = document.createElement("button");
+                        minusBtn.className = "feature-btn";
+                        minusBtn.textContent = "−";
+                        const valueSpan = document.createElement("span");
+                        valueSpan.className = "feature-value";
+                        valueSpan.textContent = dev.brightness;
+                        const plusBtn = document.createElement("button");
+                        plusBtn.className = "feature-btn";
+                        plusBtn.textContent = "+";
+                        minusBtn.onclick = () => adjustFeature(dev, "brightness", -10, valueSpan, infoDiv);
+                        plusBtn.onclick = () => adjustFeature(dev, "brightness", 10, valueSpan, infoDiv);
+                        featureDiv.append("Brightness:", minusBtn, valueSpan, plusBtn);
+                        li.appendChild(featureDiv);
+                    }
+                    if (dev.deviceType === "AC" && dev.temperature !== undefined) {
+                        const featureDiv = document.createElement("div");
+                        featureDiv.className = "feature-controls";
+                        const minusBtn = document.createElement("button");
+                        minusBtn.className = "feature-btn";
+                        minusBtn.textContent = "−";
+                        const valueSpan = document.createElement("span");
+                        valueSpan.className = "feature-value";
+                        valueSpan.textContent = dev.temperature;
+                        const plusBtn = document.createElement("button");
+                        plusBtn.className = "feature-btn";
+                        plusBtn.textContent = "+";
+                        minusBtn.onclick = () => adjustFeature(dev, "temperature", -1, valueSpan, infoDiv);
+                        plusBtn.onclick = () => adjustFeature(dev, "temperature", 1, valueSpan, infoDiv);
+                        featureDiv.append("Temperature:", minusBtn, valueSpan, plusBtn);
+                        li.appendChild(featureDiv);
+                    }
+                    if (dev.deviceType === "Heater" && dev.temperature !== undefined) {
+                        const featureDiv = document.createElement("div");
+                        featureDiv.className = "feature-controls";
+                        const minusBtn = document.createElement("button");
+                        minusBtn.className = "feature-btn";
+                        minusBtn.textContent = "−";
+                        const valueSpan = document.createElement("span");
+                        valueSpan.className = "feature-value";
+                        valueSpan.textContent = dev.temperature;
+                        const plusBtn = document.createElement("button");
+                        plusBtn.className = "feature-btn";
+                        plusBtn.textContent = "+";
+                        minusBtn.onclick = () => adjustFeature(dev, "temperature", -1, valueSpan, infoDiv);
+                        plusBtn.onclick = () => adjustFeature(dev, "temperature", 1, valueSpan, infoDiv);
+                        featureDiv.append("Temperature:", minusBtn, valueSpan, plusBtn);
+                        li.appendChild(featureDiv);
+                    }
+
+                    deviceList.appendChild(li);
+                });
+            } catch (err) {
+                devicesMsg.textContent = "An error occurred loading devices.";
+            }
+        }
+
+        fetchDevices();
+    </script>
+</body>
+</html>
