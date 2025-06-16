@@ -78,7 +78,7 @@ std::map<std::string, AC*> AC::loadACFeaturesFromFile(const std::string& filenam
 }
 
 void AC::addToFile() {
-    std::ofstream fout("../data/ac.txt", std::ios::app);
+    std::ofstream fout("data/ac.txt", std::ios::app);
     fout << "deviceId: " << getDeviceId() << "\n"
         << "temperature: 20" << "\n";
     fout.close();

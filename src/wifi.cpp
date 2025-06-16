@@ -73,7 +73,7 @@ std::map<std::string, Wifi*> Wifi::loadWifiFeaturesFromFile(const std::string& f
 }
 
 void Wifi::addToFile() {
-    std::ofstream fout("../data/wifi.txt", std::ios::app);
+    std::ofstream fout("data/wifi.txt", std::ios::app);
     fout << "deviceId: " << getDeviceId() << "\n"
         << "ssid: " << getSSID() << "\n";
     fout.close();

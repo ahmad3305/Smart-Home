@@ -80,7 +80,7 @@ std::map<std::string, Light*> Light::loadLightFeaturesFromFile(const std::string
 }
 
 void Light::addToFile() {
-    std::ofstream fout("../data/light.txt", std::ios::app);
+    std::ofstream fout("data/light.txt", std::ios::app);
     fout << "deviceId: " << getDeviceId() << "\n"
         << "brightness: 30" << "\n";
     fout.close();

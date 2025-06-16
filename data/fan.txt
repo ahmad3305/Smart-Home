@@ -18,3 +18,5 @@ deviceId: D-21304
 speed: 5
 deviceId: D-24376
 speed: 4
+deviceId: D-27013
+speed: 3

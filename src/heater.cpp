@@ -75,7 +75,7 @@ std::map<std::string, Heater*> Heater::loadHeaterFeaturesFromFile(const std::str
 }
 
 void Heater::addToFile() {
-    std::ofstream fout("../data/heater.txt", std::ios::app);
+    std::ofstream fout("data/heater.txt", std::ios::app);
     fout << "deviceId: " << getDeviceId() << "\n"
         << "temperature: 25" << "\n";
     fout.close();

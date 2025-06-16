@@ -405,3 +405,31 @@ deviceType: Fan
 status: 0
 power: 90
 
+
+deviceId: D-26481
+deviceName: Fan 4
+roomId: R-98320
+deviceType: Fan
+status: 0
+power: 120
+
+deviceId: D-27013
+deviceName: Fan 4
+roomId: R-48239
+deviceType: Fan
+status: 0
+power: 130
+
+deviceId: D-27261
+deviceName: AC 5
+roomId: R-48239
+deviceType: AC
+status: 0
+power: 1000
+
+deviceId: D-12101
+deviceName: AC 5
+roomId: R-98320
+deviceType: AC
+status: 0
+power: 1000

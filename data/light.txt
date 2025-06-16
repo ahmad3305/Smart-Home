@@ -1,5 +1,5 @@
 deviceId: D-19283
-brightness: 19
+brightness: 50
 deviceId: D-19382
 brightness: 44
 deviceId: D-49273

@@ -14,3 +14,7 @@ deviceId: D-28393
 temperature: 19
 deviceId: D-23812
 temperature: 19
+deviceId: D-27261
+temperature: 20
+deviceId: D-12101
+temperature: 20

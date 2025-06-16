@@ -97,7 +97,7 @@ std::map<std::string, Fan*> Fan::loadFanFeaturesFromFile(const std::string& file
 }
 
 void Fan::addToFile() {
-    std::ofstream fout("../data/fan.txt", std::ios::app);
+    std::ofstream fout("data/fan.txt", std::ios::app);
     fout << "deviceId: " << getDeviceId() << "\n"
         << "speed: 3" << "\n";
     fout.close();
