@@ -52,9 +52,9 @@ Here’s basically what you’ll find in the code:
 - **EnergyUsage is linked to Devices and Users.**
 
 ---
-![OOP (4)](https://github.com/user-attachments/assets/2cd81cb0-bebb-4da0-b9b6-335efb2f49e6)
+![OOP (4)](https://github.com/user-attachments/assets/fa0b6e45-d633-45e8-947e-3c95b31e29d2)
 
+![flow chart](https://github.com/user-attachments/assets/05fa25a7-f269-4efc-860e-59d0655b3d23)
 
-![flow chart](https://github.com/user-attachments/assets/dce77cde-bd21-4552-9a3b-60eb8c70b2e9)
 
 
