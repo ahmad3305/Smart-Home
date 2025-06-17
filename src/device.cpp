@@ -13,7 +13,6 @@
 #include "../include/WindowLock.h"
 #include "../include/DoorLock.h"
 
-extern std::map<std::string, Device*> allDevices;
 
 static std::string trim_bothhhh(const std::string& s) {
     size_t start = s.find_first_not_of(" \t\n\r");

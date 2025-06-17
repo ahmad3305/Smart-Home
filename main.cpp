@@ -5,22 +5,22 @@
 #include <ctime>
 #include <cstdlib>
 #include <vector>
-#include <include/energyUsage.h>
+#include "include/energyUsage.h"
 #include <unordered_map>
-#include <include/device.h>
-#include <include/admin.h>
-#include <src/json.hpp>
-#include <include/fan.h>
-#include <include/light.h>
-#include <include/ac.h>
-#include <include/heater.h>
-#include <include/doorlock.h>
-#include <include/windowlock.h>
-#include <include/wifi.h>
-#include <include/room.h>
 #include <string>
-#include <include/user.h>
-#include <include/home.h>
+#include "include/device.h"
+#include "include/admin.h"
+#include "src/json.hpp"
+#include "include/fan.h"
+#include "include/light.h"
+#include "include/ac.h"
+#include "include/heater.h"
+#include "include/doorlock.h"
+#include "include/windowlock.h"
+#include "include/wifi.h"
+#include "include/room.h"
+#include "include/home.h"
+#include "include/user.h"
 
 using json = nlohmann::json;
 
@@ -105,8 +105,8 @@ int main() {
     crow::SimpleApp app;
 
     User::loadUsersFromFile("data/users.txt", allUsers);
-	Home::loadHomesFromFile("data/homes.txt", allHomes);
-	Room::loadRoomsFromFile("data/rooms.txt", allRooms, allHomes);
+    Home::loadHomesFromFile("data/homes.txt", allHomes);
+    Room::loadRoomsFromFile("data/rooms.txt", allRooms, allHomes);
     Device::loadDevicesFromFile("data/devices.txt", allRooms);
 
 
@@ -664,7 +664,7 @@ int main() {
 
         return crow::response(result);
             });
-    
+
     // GET /api/user/home/<string>/rooms
 
     CROW_ROUTE(app, "/api/user/home/<string>/rooms").methods("GET"_method)
@@ -889,63 +889,72 @@ int main() {
             });
 
     CROW_ROUTE(app, "/api/user/device/<string>/update").methods("POST"_method)(
-    [](const crow::request& req, const std::string& deviceId) {
-        auto body = crow::json::load(req.body);
-        std::string userId = req.get_header_value("X-User-Id");
-        if (!body || userId.empty()) {
-            return crow::response(400, R"({"success": false, "error": "Invalid request"})");
-        }
-
-        std::string feature = body["feature"].s();
-        auto value = body["value"];
-
-        auto it = allDevices.find(deviceId);
-        if (it == allDevices.end() || !it->second) {
-            return crow::response(404, R"({"success": false, "error": "Device not found"})");
-        }
-        Device* device = it->second;
-
-        if (feature == "temperature") {
-            if (auto ac = dynamic_cast<AC*>(device)) {
-                if (value.t() == crow::json::type::Number) {
-                    ac->setTemperature(value.i());
-                } else {
-                    return crow::response(400, R"({"success": false, "error": "Invalid value for temperature"})");
-                }
-            } else {
-                return crow::response(400, R"({"success": false, "error": "Device is not an AC"})");
+        [](const crow::request& req, const std::string& deviceId) {
+            auto body = crow::json::load(req.body);
+            std::string userId = req.get_header_value("X-User-Id");
+            if (!body || userId.empty()) {
+                return crow::response(400, R"({"success": false, "error": "Invalid request"})");
             }
-        } else if (feature == "speed") {
-            if (auto fan = dynamic_cast<Fan*>(device)) {
-                if (value.t() == crow::json::type::Number) {
-                    fan->setSpeed(value.i());
-                } else {
-                    return crow::response(400, R"({"success": false, "error": "Invalid value for speed"})");
-                }
-            } else {
-                return crow::response(400, R"({"success": false, "error": "Device is not a Fan"})");
-            }
-        } else if (feature == "brightness") {
-            if (auto light = dynamic_cast<Light*>(device)) {
-                if (value.t() == crow::json::type::Number) {
-                    light->setBrightness(value.i());
-                } else {
-                    return crow::response(400, R"({"success": false, "error": "Invalid value for brightness"})");
-                }
-            } else {
-                return crow::response(400, R"({"success": false, "error": "Device is not a Light"})");
-            }
-        } else {
-            return crow::response(400, R"({"success": false, "error": "Unknown feature"})");
-        }
 
-        crow::json::wvalue response;
-        response["success"] = true;
-        response["deviceId"] = deviceId;
-        response["feature"] = feature;
-        response["value"] = value;
-        return crow::response{response};
-    });
+            std::string feature = body["feature"].s();
+            auto value = body["value"];
+
+            auto it = allDevices.find(deviceId);
+            if (it == allDevices.end() || !it->second) {
+                return crow::response(404, R"({"success": false, "error": "Device not found"})");
+            }
+            Device* device = it->second;
+
+            if (feature == "temperature") {
+                if (auto ac = dynamic_cast<AC*>(device)) {
+                    if (value.t() == crow::json::type::Number) {
+                        ac->setTemperature(value.i());
+                    }
+                    else {
+                        return crow::response(400, R"({"success": false, "error": "Invalid value for temperature"})");
+                    }
+                }
+                else {
+                    return crow::response(400, R"({"success": false, "error": "Device is not an AC"})");
+                }
+            }
+            else if (feature == "speed") {
+                if (auto fan = dynamic_cast<Fan*>(device)) {
+                    if (value.t() == crow::json::type::Number) {
+                        fan->setSpeed(value.i());
+                    }
+                    else {
+                        return crow::response(400, R"({"success": false, "error": "Invalid value for speed"})");
+                    }
+                }
+                else {
+                    return crow::response(400, R"({"success": false, "error": "Device is not a Fan"})");
+                }
+            }
+            else if (feature == "brightness") {
+                if (auto light = dynamic_cast<Light*>(device)) {
+                    if (value.t() == crow::json::type::Number) {
+                        light->setBrightness(value.i());
+                    }
+                    else {
+                        return crow::response(400, R"({"success": false, "error": "Invalid value for brightness"})");
+                    }
+                }
+                else {
+                    return crow::response(400, R"({"success": false, "error": "Device is not a Light"})");
+                }
+            }
+            else {
+                return crow::response(400, R"({"success": false, "error": "Unknown feature"})");
+            }
+
+            crow::json::wvalue response;
+            response["success"] = true;
+            response["deviceId"] = deviceId;
+            response["feature"] = feature;
+            response["value"] = value;
+            return crow::response{ response };
+        });
 
     CROW_ROUTE(app, "/api/device/<string>/energy-summary").methods("GET"_method)
         ([](const crow::request& req, const std::string& deviceId) {

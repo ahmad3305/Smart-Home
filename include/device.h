@@ -7,6 +7,11 @@
 #include <vector>
 #include <map>
 
+class Device;
+class Room;
+
+extern std::map<std::string, Device*> allDevices;
+
 class Device {
 protected:
     std::string deviceId;
@@ -19,11 +24,11 @@ protected:
 public:
     Device();
     Device(const std::string& id,
-        const std::string& name,
-        const std::string& type,
-        const std::string& room,
-        bool status,
-        double power);
+           const std::string& name,
+           const std::string& type,
+           const std::string& room,
+           bool status,
+           double power);
 
     std::string getDeviceId() const;
     std::string getDeviceName() const;
@@ -40,9 +45,9 @@ public:
     void setPower(double p);
 
     virtual void updateDeviceFile(const std::string& devicesFile) const = 0;
-	void updateMainDeviceFile(const std::string& devicesFile) const;
+    void updateMainDeviceFile(const std::string& devicesFile) const;
 
-    static void loadDevicesFromFile(const std::string& filename, std::map<std::string, class Room*>& allRooms);
+    static void loadDevicesFromFile(const std::string& filename, std::map<std::string, Room*>& allRooms);
     virtual void addToFile() {}
     virtual ~Device() {}
 };

@@ -5,6 +5,9 @@
 #include <string>
 #include <map>
 
+class User;
+extern std::map<std::string, User*> allUsers;
+
 class User : public Account {
 public:
     User();
