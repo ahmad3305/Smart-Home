@@ -122,7 +122,7 @@
                 totalCost += Number(u.cost || 0);
             }
             document.getElementById("totalEnergy").textContent = totalEnergy.toFixed(3);
-            document.getElementById("totalCost").textContent = "$" + totalCost.toFixed(2);
+            document.getElementById("totalCost").textContent = "$" + totalCost.toFixed(3);
 
             // Build table
             let html = "";
@@ -144,7 +144,7 @@
                         <td>${u.onTimestamp || "-"}</td>
                         <td>${u.offTimestamp || "-"}</td>
                         <td>${Number(u.energyConsumed || 0).toFixed(3)}</td>
-                        <td>$${Number(u.cost || 0).toFixed(2)}</td>
+                        <td>$${Number(u.cost || 0).toFixed(3)}</td>
                     </tr>`;
                 }
                 html += `</tbody></table>`;

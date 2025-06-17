@@ -17,3 +17,7 @@ location: East Side
 warehouseId: W-10005
 warehouseName: West Facility
 location: West Zone
+
+warehouseId: W-29354
+warehouseName: Lahore Godaam
+location: DHA phase 8

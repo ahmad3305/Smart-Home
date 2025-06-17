@@ -893,3 +893,17 @@ onTimestamp: 2025-06-16 14:35:12
 offTimestamp: 2025-06-16 15:18:12
 energyConsumed: 0.008600
 cost: 0.004300
+
+usageId: EU-9499
+deviceId: D-19283
+onTimestamp: 2025-06-17 12:38:48
+offTimestamp: 2025-06-17 13:05:48
+energyConsumed: 0.005400
+cost: 0.002700
+
+usageId: EU-22426
+deviceId: D-19283
+onTimestamp: 2025-06-17 16:32:01
+offTimestamp: 2025-06-17 17:43:01
+energyConsumed: 0.014200
+cost: 0.007100
