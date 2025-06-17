@@ -129,7 +129,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\Smart-Home-Automation\main.cpp" />
     <ClCompile Include="src\ac.cpp" />
     <ClCompile Include="src\account.cpp" />
     <ClCompile Include="src\admin.cpp" />
